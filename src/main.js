@@ -6,9 +6,14 @@ import 'babel-polyfill';
 import Mixin from './mixins';
 import store from './store';
 import axios from 'axios';
+import 'swiper/dist/css/swiper.css'
+import VueAwesomeSwiper from 'vue-awesome-swiper'
+import WeVue from 'we-vue'
+import 'we-vue/lib/style.css'
+import '@/js/plus.js';
 
-
-
+Vue.use(WeVue)
+Vue.use(VueAwesomeSwiper)
 Vue.use(VueRouter);
 Vue.mixin(Mixin);
 
@@ -21,22 +26,22 @@ const router = new VueRouter({
 
 //系统错误捕获
 // const errorHandler = (err, vm, info)=>{
-  // let obj={
-  //     message, // 异常信息
-  //     name, // 异常名称
-  //     script,  // 异常脚本url
-  //     line,  // 异常行号
-  //     column,  // 异常列号
-  //     stack  // 异常堆栈信息
-  // } = err;
-  // console.log(err.message);
+// let obj={
+//     message, // 异常信息
+//     name, // 异常名称
+//     script,  // 异常脚本url
+//     line,  // 异常行号
+//     column,  // 异常列号
+//     stack  // 异常堆栈信息
+// } = err;
+// console.log(err.message);
 // };
 // Vue.config.errorHandler = errorHandler;
 
 // ajax
 Vue.$http = Vue.prototype.$http = axios.create({
   // baseURL: 'http://api.55duanzi.com',
-  // baseURL: 'http://tt.i6bktq.cn:83',
+  baseURL: 'http://api.i6bktq.cn:83',
   withCredentials: true,// `withCredentials` 表示跨域请求时是否需要使用凭证
   timeout: 5000
 });
@@ -69,9 +74,9 @@ router.beforeEach((to, from, next) => {
 
 });
 router.afterEach((to, from) => {
-    if (to.meta.title) {
-        document.title = to.meta.title;
-    }
+  if (to.meta.title) {
+    document.title = to.meta.title;
+  }
 });
 
 /* eslint-disable no-new */
