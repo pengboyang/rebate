@@ -5,7 +5,7 @@
       <span class="moreList" @click="moreList">更多></span>
     </div>
     <div class="col2 lazyload-list">
-      <div class="col2Wra lazyload-list-item" @click="goDetail()" v-for="item in listdata.list">
+      <div class="col2Wra lazyload-list-item" @click="goDetail(item.coupon_click_url)" v-for="item in listdata.list">
         <div class="col2Pic "><img v-lazy="item.pictUrl" :key="item.pictUrl" class="lazyload-image" alt=""></div>
         <div class="col2Name">{{item.title}}</div>
         <div class="col2PrePrice"><span>原价</span>¥{{item.reserve_price}}<span class="num">月销{{item.volume}}笔</span>
@@ -34,8 +34,8 @@
       moreList() {
         this.$router.push({path: '/more', query: {id: this.listdata.select, name: this.listdata.name}});
       },
-      goDetail(id, type) {
-        this.$router.push({path: '/bookDetail', query: {id: id, type: type}});
+      goDetail(url) {
+        var w = plus.webview.open(url, 'taobao');
       },
     },
   }

@@ -126,14 +126,14 @@
   }
 
   .freeNovel .weui-grid {
-    width: 32%;
-    padding: 0;
+    width: 32%!important;
+    padding: 0!important;
   }
 
   .freeNovel .weui-grid .weui-grid__icon {
-    width: 100%;
+    width: 100%!important;
+    height:auto!important;
   }
-
   .weui-grids:after, .weui-grids:before {
     height: 0;
   }

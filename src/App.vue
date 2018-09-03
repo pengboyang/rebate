@@ -45,6 +45,11 @@
     -webkit-overflow-scrolling: touch;
     padding-bottom: 53px;
     box-sizing: border-box;
+    position: absolute;
+    left: 0;
+    top: 0;
+    overflow-y: auto;
+    overflow-x: hidden;
   }
 
   .bookDetail {

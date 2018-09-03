@@ -159,16 +159,16 @@
 </script>
 <style>
   .weui-grid {
-    width: 25%;
+    width: 25%!important;
   }
 
   .weui-grids:before, .weui-grid:before, .weui-grid:after {
-    border: 0;
+    border: 0!important;
   }
 
   .weui-grid__icon {
-    width: 32px;
-    height: auto;
+    width: 32px!important;
+    height: auto!important;
   }
 
   .icontxt {
