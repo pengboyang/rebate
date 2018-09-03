@@ -26,21 +26,21 @@
             slogan: '汇聚运动潮品',
             url: require('../assets/img/yundong.png'),
             name: '运动户外',
-            select: '女装'
+            select: '运动鞋'
           },
           {
-            title: '手机数码',
+            title: '数码家电',
             slogan: '第一数码发现地',
             url: require('../assets/img/shuma.png'),
-            name: '手机数码',
-            select: '美妆'
+            name: '数码家电',
+            select: '手机'
           },
           {
             title: '食品百货',
             slogan: '天下美食大汇聚',
             url: require('../assets/img/shipin.png'),
             name: '食品百货',
-            select: '男装'
+            select: '食品'
           },
         ],
       }
