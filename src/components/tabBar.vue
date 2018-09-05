@@ -36,7 +36,7 @@
         let isLogin=this.isLogin();
         if(isLogin){
           this.$toast.text({
-            duration: 10000,
+            duration: 1000,
             message: '您已登录'
           });
           return false;

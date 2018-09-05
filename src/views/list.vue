@@ -115,6 +115,10 @@
       hot
     },
     created() {
+      var otherView = plus.webview.getWebviewById('taobao') || null;
+      if (otherView){
+        plus.webview.close(otherView);
+      }
       let query=this.getCode();
       let isLogin=this.isLogin();
       if(!isLogin&&query.code){
