@@ -115,6 +115,11 @@
       hot
     },
     created() {
+      let query=this.getCode();
+      let isLogin=this.isLogin();
+      if(!isLogin&&query.code){
+        this.login(query);
+      }
       for (let key in this.listdata) {
         this.getlist(key);
       }
@@ -145,12 +150,36 @@
           }
         }).then(res => {
           if (res.status == 200) {
+            if (key == 'good') {
+              res.data.list.forEach(item => {
+                let price = item.coupon_info.replace(/满/g, '').replace(/减/g, '$').split('$');
+                item.reserve_price = item.zk_final_price;
+                item.zk_final_price = item.zk_final_price >= parseInt(price[0]) ? (item.zk_final_price - parseInt(price[1])).toFixed(2) : item.zk_final_price;
+              })
+            }
             this.listdata[key].list = res.data.list;
+
           }
         }).catch()
       },
       toolbar(name, select) {
         this.$router.push({path: '/more', query: {id: select, name: name}});
+      },
+      /*登录*/
+      login(obj){
+        this.$http({
+          method: 'get',
+          url: this.apiUrl.userToken,
+          params: {code: obj.code}
+        }).then(res => {
+          if (res.status == 200) {
+            let data=res.data;
+            if(data.status==1){
+              localStorage.setItem('userInfo',JSON.stringify(data));
+              this.$toast.success('登录成功');
+            }
+          }
+        }).catch()
       }
     },
     mounted() {
@@ -159,16 +188,16 @@
 </script>
 <style>
   .weui-grid {
-    width: 25%!important;
+    width: 25% !important;
   }
 
   .weui-grids:before, .weui-grid:before, .weui-grid:after {
-    border: 0!important;
+    border: 0 !important;
   }
 
   .weui-grid__icon {
-    width: 32px!important;
-    height: auto!important;
+    width: 32px !important;
+    height: auto !important;
   }
 
   .icontxt {

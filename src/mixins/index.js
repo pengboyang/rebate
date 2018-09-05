@@ -3,6 +3,8 @@ var mixin = {
     return {
       apiUrl: {
         getlist: '/tbk/api/goods/couponGoodsList',
+        userAuth: '/tbk/api/user/auth',
+        userToken: '/tbk/api/user/token',
       }
     };
   },
@@ -36,6 +38,42 @@ var mixin = {
     },
     goTaobao(url) {
       var w = plus.webview.open(url, 'taobao');
+    },
+    /*获取code*/
+    getCode() {
+      try{
+        let url = window.location.href;
+        let baseurl = url.split('#')[0];
+        let hash = baseurl.split('?')[1];
+        let hasharr = hash.split('&');
+        let query = {};
+        hasharr.forEach((item, index) => {
+          query[item.split('=')[0]] = item.split('=')[1];
+        });
+        // if (query.state) {
+        //   store.dispatch({
+        //     type: 'userCodeChange',
+        //     val: query.code,
+        //   });
+        // } else {
+        //   store.dispatch({
+        //     type: 'codeChange',
+        //     val: query.code,
+        //   });
+        // }
+        return query;
+      }catch (e) {
+
+      }
+    },
+    /*登录状态*/
+    isLogin(){
+      let userInfo=JSON.parse(localStorage.getItem('userInfo'))||{};
+      if(userInfo.uuid){
+        return true;
+      }else{
+        return false;
+      }
     }
   }
 

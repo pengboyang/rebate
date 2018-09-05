@@ -11,13 +11,14 @@
           infinite-scroll-disabled="loading"
           infinite-scroll-distance="50"
         >
-          <div class="col2Wra lazyload-list-item" @click="goDetail(item.coupon_click_url)" v-for="item in listdata.list">
+          <div class="col2Wra lazyload-list-item" @click="goDetail(item.coupon_click_url)"
+               v-for="item in listdata.list">
             <div class="col2Pic "><img v-lazy="item.pictUrl" :key="item.pictUrl" class="lazyload-image" alt=""></div>
             <div class="col2Name">{{item.title}}</div>
             <div class="col2PrePrice"><span>原价</span>¥{{item.reserve_price}}<span class="num">月销{{item.volume}}笔</span>
             </div>
-            <div class="price"><span>券后</span><em>¥</em>{{item.zk_final_price}}<span
-              class="coupon">{{item.coupon_info}}</span></div>
+            <div class="price"><span>券后</span><em>¥</em>{{item.zk_final_price}}<!--<span
+              class="coupon">{{item.coupon_info}}</span>--></div>
           </div>
         </wv-group>
         <p v-show="loading" class="loading-tips">
@@ -25,7 +26,7 @@
         </p>
       </div>
     </div>
-    <div class="gotop" @click="gotop"><img src="../assets/img/gotop.png"/></div>
+    <div class="gotop" @click="gotop" v-show="backTopShow"><img src="../assets/img/gotop.png"/></div>
   </div>
 </template>
 <script>
@@ -38,6 +39,7 @@
         betterMoreList: [],
         loading: false,
         allLoaded: false,
+        backTopShow: false,
         wrapperHeight: 0,
         page: {
           offset: 1,
@@ -61,6 +63,11 @@
           }
         }).then(res => {
           if (res.status == 200) {
+            res.data.list.forEach(item => {
+              let price = item.coupon_info.replace(/满/g, '').replace(/减/g, '$').split('$');
+              item.reserve_price = item.zk_final_price;
+              item.zk_final_price = item.zk_final_price >= parseInt(price[0]) ? (item.zk_final_price - parseInt(price[1])).toFixed(2) : item.zk_final_price;
+            });
             this.listdata.list = this.listdata.list.concat(res.data.list);
             this.$nextTick(() => {
               this.loading = false;
@@ -69,22 +76,35 @@
         }).catch()
       },
       goDetail(url) {
-        var w = plus.webview.open(url, 'taobao');
+        this.goTaobao(url);
       },
       loadMore() {
-        console.log('nihao');
         this.loading = true;
         this.page.offset++;
-        console.log(this.page.offset);
         this.moreList();
       },
       gotop() {
-        console.log(this.$refs.wrapper.scrollTop);
-        this.$refs.wrapper.scrollTop = 0;
+        // console.log(this.$refs.wrapper.scrollTop);
+        // this.$refs.wrapper.scrollTop = 0;
+        let back = setInterval(() => {
+          if(this.$refs.wrapper.scrollTop){
+            this.$refs.wrapper.scrollTop-=100;
+          }else {
+            clearInterval(back)
+          }
+        });
+      },
+      handleScroll(){
+        if (this.$refs.wrapper.scrollTop > 100) {
+          this.backTopShow=true;
+        }else {
+          this.backTopShow=false;
+        }
       }
     },
     mounted() {
       this.wrapperHeight = document.documentElement.clientHeight - this.$refs.wrapper.getBoundingClientRect().top - 53;
+      this.$refs.wrapper.addEventListener('scroll', this.handleScroll)
     }
   }
 </script>
@@ -192,7 +212,7 @@
   }
 
   .weui-cells:before {
-    border: 0!important;
+    border: 0 !important;
   }
 
   .gotop {

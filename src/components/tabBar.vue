@@ -11,7 +11,7 @@
       <wv-tabbar-item to="">
         <img class="weui-tabbar__icon" src="../assets/img/shoucang.png" slot="icon"> 收藏
       </wv-tabbar-item>
-      <wv-tabbar-item to="">
+      <wv-tabbar-item @click="my">
       <span slot="icon" style="display: inline-block; position: relative;">
         <img class="weui-tabbar__icon" src="../assets/img/my.png" slot="icon">
         <!--<wv-badge is-dot style="position: absolute;top: 0;right: -6px;">8</wv-badge>-->
@@ -31,7 +31,29 @@
       }
     },
     computed: {},
-    methods: {}
+    methods: {
+      my(){
+        let isLogin=this.isLogin();
+        if(isLogin){
+          this.$toast.text({
+            duration: 10000,
+            message: '您已登录'
+          });
+          return false;
+        }
+        this.$http({
+          method: 'get',
+          url: this.apiUrl.userAuth,
+        }).then(res => {
+          if (res.status == 200) {
+            let url=res.data.url;
+            url=url+'&view=wap';
+            this.goTaobao(url);
+            // location.href=url;
+          }
+        }).catch()
+      }
+    }
   }
 </script>
 

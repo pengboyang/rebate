@@ -30,7 +30,7 @@
         this.$router.push({path: '/more', query: {id: this.listdata.select, name: this.listdata.name}});
       },
       goDetail(url) {
-        var w = plus.webview.open(url, 'taobao');
+        this.goTaobao(url);
       }
     }
   }

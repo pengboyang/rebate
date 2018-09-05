@@ -3,7 +3,7 @@
     <div class="serch">
       <div class="topBanner">
         <div style="width:50px;height:100%;" @click="routeBack">
-          <img class="returnBack" src="../assets/img/returnback.png" alt="">
+          <img class="returnBack" src="../assets/img/returnwhite.png" alt="">
         </div>
         <div class="topTitle">{{title}}</div>
       </div>
@@ -101,6 +101,7 @@
 
   .topBanner .topTitle {
     font-size: 17px;
+    color:#fff;
     font-weight: 700;
     width: 80%;
     height: 50px;
@@ -111,5 +112,6 @@
     bottom: 0;
     left: 0;
     margin: auto;
+    overflow: hidden;
   }
 </style>

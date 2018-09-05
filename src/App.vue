@@ -87,4 +87,7 @@
   .weui-dialog__btn_primary {
     color: #fe5500;
   }
+  .weui-toast{
+    top:60%!important;
+  }
 </style>

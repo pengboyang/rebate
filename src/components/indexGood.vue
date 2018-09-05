@@ -10,8 +10,8 @@
         <div class="col2Name">{{item.title}}</div>
         <div class="col2PrePrice"><span>原价</span>¥{{item.reserve_price}}<span class="num">月销{{item.volume}}笔</span>
         </div>
-        <div class="price"><span>券后</span><em>¥</em>{{item.zk_final_price}}<span
-          class="coupon">{{item.coupon_info}}</span></div>
+        <div class="price"><span>券后</span><em>¥</em>{{item.zk_final_price}}<!--<span
+          class="coupon">{{item.coupon_info}}</span>--></div>
       </div>
     </div>
   </div>
@@ -28,14 +28,14 @@
     },
     props: ['listdata'],
     created() {
-      console.log(this.listdata);
+
     },
     methods: {
       moreList() {
         this.$router.push({path: '/more', query: {id: this.listdata.select, name: this.listdata.name}});
       },
       goDetail(url) {
-        var w = plus.webview.open(url, 'taobao');
+        this.goTaobao(url);
       },
     },
   }
@@ -123,6 +123,10 @@
   }
 
   .coupon {
+    display: inline-block;
+    font-size: 9.6px;
+    transform: scale(.8);
+    -webkit-transform: scale(.8);
   }
 
   .col2Wra:nth-child(2n+1) {
