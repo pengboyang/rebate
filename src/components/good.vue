@@ -164,7 +164,7 @@
   }
 
   .col2PrePrice {
-    font-size: 14px;
+    font-size: 12px;
     text-align: left;
     color: #a3a3a3;
   }

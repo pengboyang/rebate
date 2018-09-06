@@ -96,7 +96,7 @@
   }
 
   .col2PrePrice {
-    font-size: 14px;
+    font-size: 12px;
     text-align: left;
     color: #a3a3a3;
   }
@@ -108,7 +108,7 @@
 
   .price {
     color: #fe5500;
-    font-size: 19px;
+    font-size: 16px;
     text-align: left;
   }
 

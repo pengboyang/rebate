@@ -119,9 +119,9 @@
       if (otherView){
         plus.webview.close(otherView);
       }
-      let query=this.getCode();
-      let isLogin=this.isLogin();
-      if(!isLogin&&query.code){
+      let query = this.getCode();
+      let isLogin = this.isLogin();
+      if (!isLogin && query && query.code) {
         this.login(query);
       }
       for (let key in this.listdata) {
@@ -154,13 +154,11 @@
           }
         }).then(res => {
           if (res.status == 200) {
-            if (key == 'good') {
-              res.data.list.forEach(item => {
-                let price = item.coupon_info.replace(/满/g, '').replace(/减/g, '$').split('$');
-                item.reserve_price = item.zk_final_price;
-                item.zk_final_price = item.zk_final_price >= parseInt(price[0]) ? (item.zk_final_price - parseInt(price[1])).toFixed(2) : item.zk_final_price;
-              })
-            }
+            res.data.list.forEach(item => {
+              let price = item.coupon_info.replace(/满/g, '').replace(/减/g, '$').split('$');
+              item.reserve_price = item.zk_final_price;
+              item.zk_final_price = item.zk_final_price >= parseInt(price[0]) ? (item.zk_final_price - parseInt(price[1])).toFixed(2) : item.zk_final_price;
+            })
             this.listdata[key].list = res.data.list;
 
           }
@@ -170,16 +168,16 @@
         this.$router.push({path: '/more', query: {id: select, name: name}});
       },
       /*登录*/
-      login(obj){
+      login(obj) {
         this.$http({
           method: 'get',
           url: this.apiUrl.userToken,
           params: {code: obj.code}
         }).then(res => {
           if (res.status == 200) {
-            let data=res.data;
-            if(data.status==1){
-              localStorage.setItem('userInfo',JSON.stringify(data));
+            let data = res.data;
+            if (data.status == 1) {
+              localStorage.setItem('userInfo', JSON.stringify(data));
               this.$toast.success('登录成功');
             }
           }

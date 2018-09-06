@@ -8,7 +8,7 @@
       <div class="novelWra" @click="goDetail(item.coupon_click_url)" v-for="item in listdata.list">
         <div class="novelPic"><img :src="item.pictUrl" alt=""></div>
         <div class="novelName">{{item.title}}</div>
-        <div class="price"><!--<span>券后</span><em>¥</em>-->{{item.zk_final_price}}</div>
+        <div class="price"><span>券后</span><em>¥</em>{{item.zk_final_price}}</div>
       </div>
     </div>
   </div>
@@ -90,7 +90,7 @@
 
   .price {
     color: #fe5500;
-    font-size: 19px;
+    font-size: 16px;
     text-align: left;
   }
 
