@@ -72,13 +72,13 @@
           },
           {
             title: '母婴',
-            url: require('../assets/img/icon_3.png'),
+            url: require('../assets/img/icon_8.png'),
             name: '母婴',
             select: '母婴'
           },
           {
             title: '鞋包配饰',
-            url: require('../assets/img/icon_8.png'),
+            url: require('../assets/img/icon_6.png'),
             name: '鞋包配饰',
             select: '女鞋'
           },
@@ -90,7 +90,7 @@
           },
           {
             title: '童装',
-            url: require('../assets/img/icon_6.png'),
+            url: require('../assets/img/icon_3.png'),
             name: '童装',
             select: '童装'
           },
@@ -115,10 +115,10 @@
       hot
     },
     created() {
-      var otherView = plus.webview.getWebviewById('taobao') || null;
-      if (otherView){
-        plus.webview.close(otherView);
-      }
+      // var otherView = plus.webview.getWebviewById('taobao') || null;
+      // if (otherView){
+      //   plus.webview.close(otherView);
+      // }
       let query = this.getCode();
       let isLogin = this.isLogin();
       if (!isLogin && query && query.code) {
@@ -198,7 +198,7 @@
   }
 
   .weui-grid__icon {
-    width: 32px !important;
+    width: 50px !important;
     height: auto !important;
   }
 
