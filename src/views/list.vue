@@ -127,7 +127,6 @@
           params: {gender: this.gender}
         }).then(res => {
           if (res.status == 200) {
-            console.log(res);
             var data = res.data.novelLists;
             this.sweiperList = res.data.novelItemList;
             this.dataList = res.data.novelLists;

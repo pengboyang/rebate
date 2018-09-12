@@ -11,7 +11,7 @@
           infinite-scroll-disabled="loading"
           infinite-scroll-distance="50"
         >
-          <div class="col2Wra lazyload-list-item" @click="goDetail(item.coupon_click_url)" v-for="item in listdata.list">
+          <div class="col2Wra lazyload-list-item" @click="goDetail(item.num_iid,item.coupon_click_url)" v-for="item in listdata.list">
             <div class="col2Pic "><img v-lazy="item.pictUrl" :key="item.pictUrl" class="lazyload-image" alt=""></div>
             <div class="col2Name">{{item.title}}</div>
             <div class="col2PrePrice"><span>原价</span>¥{{item.reserve_price}}<span class="num">月销{{item.volume}}笔</span>
@@ -68,8 +68,9 @@
           }
         }).catch()
       },
-      goDetail(url) {
-        var w = plus.webview.open(url, 'taobao');
+      goDetail(id,url) {
+        // var w = plus.webview.open(url, 'taobao');
+        this.$router.push({path:'/detail',query:{id:id}});
       },
       loadMore() {
         console.log('nihao');
@@ -206,5 +207,6 @@
   .gotop img {
     width: 100%;
   }
+
 </style>
 

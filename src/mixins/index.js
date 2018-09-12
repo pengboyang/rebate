@@ -3,6 +3,8 @@ var mixin = {
     return {
       apiUrl: {
         getlist: '/tbk/api/goods/couponGoodsList',
+        goodsInfo:'/tbk/api/goods/goodsInfo',
+        favorAddFavor:'/tbk/api/favor/addFavor'
       }
     };
   },
