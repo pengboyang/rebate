@@ -1,12 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="471a6033-41b8-4cdf-a0a2-f377386f07d9" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/src/assets/img/icon_6.png" beforeDir="false" afterPath="$PROJECT_DIR$/src/assets/img/icon_6.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/assets/img/icon_7.png" beforeDir="false" afterPath="$PROJECT_DIR$/src/assets/img/icon_7.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/assets/img/icon_8.png" beforeDir="false" afterPath="$PROJECT_DIR$/src/assets/img/icon_8.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/views/list.vue" beforeDir="false" afterPath="$PROJECT_DIR$/src/views/list.vue" afterDir="false" />
-    </list>
+    <list default="true" id="471a6033-41b8-4cdf-a0a2-f377386f07d9" name="Default Changelist" comment="" />
     <ignored path="$PROJECT_DIR$/.tmp/" />
     <ignored path="$PROJECT_DIR$/temp/" />
     <ignored path="$PROJECT_DIR$/tmp/" />
@@ -377,16 +372,15 @@
       <option name="presentableId" value="Default" />
       <updated>1535690084390</updated>
       <workItem from="1535690085764" duration="44727000" />
-      <workItem from="1535991439829" duration="15209000" />
+      <workItem from="1535991439829" duration="15212000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="59936000" />
+    <option name="totallyTimeSpent" value="59939000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-186" y="-1080" width="1920" height="1080" extended-state="0" />
-    <editor active="true" />
     <layout>
       <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.24960506" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
