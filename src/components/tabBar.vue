@@ -1,24 +1,23 @@
 <template>
   <div class="tabBar">
-    <wv-tabbar>
-      <wv-tabbar-item to="" is-on>
-      <span slot="icon" style="display: inline-block; position: relative;">
-        <img class="weui-tabbar__icon" src="../assets/img/tuijian.png" slot="icon">
-        <!--<wv-badge style="position: absolute;top: -2px;right: -13px;">8</wv-badge>-->
-      </span>
-        推荐
-      </wv-tabbar-item>
-      <wv-tabbar-item to="">
-        <img class="weui-tabbar__icon" src="../assets/img/shoucang.png" slot="icon"> 收藏
-      </wv-tabbar-item>
-      <wv-tabbar-item @click="my">
-      <span slot="icon" style="display: inline-block; position: relative;">
-        <img class="weui-tabbar__icon" src="../assets/img/my.png" slot="icon">
-        <!--<wv-badge is-dot style="position: absolute;top: 0;right: -6px;">8</wv-badge>-->
-      </span>
-        我的
-      </wv-tabbar-item>
-    </wv-tabbar>
+    <div class="navBox">
+      <router-link to="/index">
+        <span class="icon icon-foo"></span>
+        <p>推荐</p>
+      </router-link>
+    </div>
+    <div class="navBox">
+      <router-link to="/collect">
+        <span class="icon icon-bar"></span>
+        <p>收藏</p>
+      </router-link>
+    </div>
+    <div class="navBox">
+      <router-link to="/detail">
+        <span class="icon icon-fb"></span>
+        <p>我的</p>
+      </router-link>
+    </div>
   </div>
 </template>
 
@@ -32,9 +31,9 @@
     },
     computed: {},
     methods: {
-      my(){
-        let isLogin=this.isLogin();
-        if(isLogin){
+      my() {
+        let isLogin = this.isLogin();
+        if (isLogin) {
           this.$toast.text({
             duration: 1000,
             message: '您已登录'
@@ -46,8 +45,8 @@
           url: this.apiUrl.userAuth,
         }).then(res => {
           if (res.status == 200) {
-            let url=res.data.url;
-            url=url+'&view=wap';
+            let url = res.data.url;
+            url = url + '&view=wap';
             this.goTaobao(url);
             // location.href=url;
           }
@@ -58,15 +57,86 @@
 </script>
 
 <style scoped>
-  .tabBar {
-    width: 100%;
-    position: fixed;
-    z-index: 999;
-    bottom: 0;
-    left: 0;
+  * {
+    padding: 0;
+    margin: 0;
   }
 
-  .weui-tabbar__label {
+  a:-webkit-any-link {
+    text-decoration: none;
     color: #000;
+    display: block;
+  }
+
+  .tabBar {
+    box-sizing: border-box;
+    display: -webkit-flex;
+    display: flex;
+    align-items: center;
+    width: 100%;
+    height: 53px;
+    position: fixed;
+    z-index: 1;
+    bottom: 0;
+    left: 0;
+    background: #fff;
+    font-size: 12px;
+    border-top: 1px solid #e0e0e0;
+  }
+
+  .tabBar .navBox {
+    text-align: center;
+    vertical-align: middle;
+    flex: 1;
+    height: 100%;
+    padding-top: 8px;
+  }
+
+  .tabBar .navBox:first-child {
+    border-right: 1px solid #e0e0e0;
+  }
+
+  .tabBar .navBox:nth-child(2) {
+    border-right: 1px solid #e0e0e0;
+  }
+
+  .icon {
+    display: inline-block;
+    width: 22px;
+    height: 20px;
+  }
+
+  /*头条*/
+  .icon-foo {
+    background: url('../assets/img/tuijian.png');
+    background-size: 100% 100%;
+  }
+
+  /*视频*/
+  .icon-bar {
+    background: url('../assets/img/shoucang.png');
+    background-size: 100% 100%;
+  }
+
+  /*我的*/
+  .icon-fb {
+    background: url('../assets/img/my.png');
+    background-size: 100% 100%;
+  }
+
+  p {
+    line-height: 12px;
+  }
+
+  .router-link-active p {
+    color: red;
+  }
+
+  .router-link-active p {
+    color: red;
+  }
+
+  .router-link-active p {
+    color: red;
   }
 </style>

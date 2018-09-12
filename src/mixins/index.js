@@ -5,6 +5,8 @@ var mixin = {
         getlist: '/tbk/api/goods/couponGoodsList',
         userAuth: '/tbk/api/user/auth',
         userToken: '/tbk/api/user/token',
+        goodsInfo: '/tbk/api/goods/goodsInfo',
+        favorAddFavor: '/tbk/api/favor/addFavor'
       }
     };
   },
@@ -41,7 +43,7 @@ var mixin = {
     },
     /*获取code*/
     getCode() {
-      try{
+      try {
         let url = window.location.href;
         let baseurl = url.split('#')[0];
         let hash = baseurl.split('?')[1];
@@ -62,16 +64,16 @@ var mixin = {
         //   });
         // }
         return query;
-      }catch (e) {
+      } catch (e) {
 
       }
     },
     /*登录状态*/
-    isLogin(){
-      let userInfo=JSON.parse(localStorage.getItem('userInfo'))||{};
-      if(userInfo.uuid){
+    isLogin() {
+      let userInfo = JSON.parse(localStorage.getItem('userInfo')) || {};
+      if (userInfo.uuid) {
         return true;
-      }else{
+      } else {
         return false;
       }
     }

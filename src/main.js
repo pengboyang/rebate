@@ -11,12 +11,17 @@ import VueAwesomeSwiper from 'vue-awesome-swiper'
 import WeVue from 'we-vue'
 import 'we-vue/lib/style.css'
 import '@/js/plus.js';
+import $ from 'jquery';
+import VueLazyLoad from 'vue-lazyload'
 
 Vue.use(WeVue)
 Vue.use(VueAwesomeSwiper)
 Vue.use(VueRouter);
 Vue.mixin(Mixin);
-
+Vue.use(VueLazyLoad,{
+  // error:'./static/error.png',
+  // loading:require('./assets/img/videoPause.png')
+});
 Vue.config.productionTip = false;
 // Vue.config.debug = true;/*异常捕捉*/
 

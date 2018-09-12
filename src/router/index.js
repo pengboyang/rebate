@@ -24,5 +24,25 @@ export default [
     name: 'more',
     component: resolve => require(['views/more'], resolve),
   },
+  {
+    meta: {
+      title: '商品详情',
+      keepAlive: false,
+      isBack: false,
+    },
+    path: '/detail',
+    name: 'detail',
+    component: resolve => require(['views/detail'], resolve),
+  },
+  {
+    meta: {
+      title: '我的收藏',
+      keepAlive: false,
+      isBack: false,
+    },
+    path: '/collect',
+    name: 'collect',
+    component: resolve => require(['views/collect'], resolve),
+  },
 
 ];

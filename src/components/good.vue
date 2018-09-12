@@ -11,7 +11,7 @@
           infinite-scroll-disabled="loading"
           infinite-scroll-distance="50"
         >
-          <div class="col2Wra lazyload-list-item" @click="goDetail(item.coupon_click_url)"
+          <div class="col2Wra lazyload-list-item" @click="goDetail(item.num_iid,item.coupon_click_url)"
                v-for="item in listdata.list">
             <div class="col2Pic "><img v-lazy="item.pictUrl" :key="item.pictUrl" class="lazyload-image" alt=""></div>
             <div class="col2Name">{{item.title}}</div>
@@ -75,8 +75,9 @@
           }
         }).catch()
       },
-      goDetail(url) {
-        this.goTaobao(url);
+      goDetail(id, url) {
+        // var w = plus.webview.open(url, 'taobao');
+        this.$router.push({path: '/detail', query: {id: id}});
       },
       loadMore() {
         this.loading = true;
@@ -87,18 +88,18 @@
         // console.log(this.$refs.wrapper.scrollTop);
         // this.$refs.wrapper.scrollTop = 0;
         let back = setInterval(() => {
-          if(this.$refs.wrapper.scrollTop){
-            this.$refs.wrapper.scrollTop-=100;
-          }else {
+          if (this.$refs.wrapper.scrollTop) {
+            this.$refs.wrapper.scrollTop -= 100;
+          } else {
             clearInterval(back)
           }
         });
       },
-      handleScroll(){
+      handleScroll() {
         if (this.$refs.wrapper.scrollTop > 100) {
-          this.backTopShow=true;
-        }else {
-          this.backTopShow=false;
+          this.backTopShow = true;
+        } else {
+          this.backTopShow = false;
         }
       }
     },
@@ -226,5 +227,6 @@
   .gotop img {
     width: 100%;
   }
+
 </style>
 

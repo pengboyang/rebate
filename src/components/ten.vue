@@ -5,7 +5,7 @@
       <span class="moreList" @click="moreList">更多></span>
     </div>
     <div class="manNovel">
-      <div class="novelWra" @click="goDetail(item.coupon_click_url)" v-for="item in listdata.list">
+      <div class="novelWra" @click="goDetail(item.num_iid,item.coupon_click_url)" v-for="item in listdata.list">
         <div class="novelPic"><img :src="item.pictUrl" alt=""></div>
         <div class="novelName">{{item.title}}</div>
         <div class="price"><span>券后</span><em>¥</em>{{item.zk_final_price}}</div>
@@ -23,13 +23,15 @@
     },
     props: ['listdata'],
     created() {
+      console.log(this.listdata)
     },
     methods: {
       moreList() {
         this.$router.push({path: '/more', query: {id: this.listdata.select, name: this.listdata.name}});
       },
-      goDetail(url) {
-        this.goTaobao(url);
+      goDetail(id, url) {
+        this.$router.push({path: '/detail', query: {id: id}});
+        // var w = plus.webview.open(url, 'taobao');
       }
     }
   }
