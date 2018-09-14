@@ -12,7 +12,7 @@
           infinite-scroll-disabled="loading"
           infinite-scroll-distance="50"
         >
-          <div class="wra" v-for="item in goodsLists">
+          <div class="wra" v-for="item in goodsLists" @click="goTaobao(item.coupon_click_url)">
             <div v-if="choosePic" class="sircle" @click="choseEditBook(item.num_iid)"><img v-if="choosegoodList.indexOf(item.num_iid)>=0" src="../assets/img/xuanzhong.png" alt=""><div v-else class="box"></div></div>
             <div class="left"><img :src="item.pictUrl" alt=""></div>
             <div class="right" :style="{width:rightWidth}">
@@ -66,8 +66,9 @@
         loading: false,
         page: {
           offset: 0,
-          limit: 5
-        }
+          limit: 8
+        },
+        loadFlag:false,
       }
     },
     components:{
@@ -155,19 +156,16 @@
               })
               this.goodsLists=[];
               this.page.offset=0;
-              this.page.limit=5;
+              this.page.limit=8;
             }
           }
         }).catch();
       },
       /*加载更多*/
       loadMore(){
-        let isLogin = this.isLogin();
-        if (isLogin) {
-          this.loading = true;
-          this.page.offset++;
-          this.collectList(this.page.offset,this.page.limit);
-        }
+        this.loading = true;
+        this.page.offset++;
+        this.collectList(this.page.offset,this.page.limit);
       },
       /*收藏列表*/
       collectList(page,limit){
@@ -195,7 +193,7 @@
             })
           }
         }).catch();
-      }
+      },
     }
   }
 </script>
@@ -340,7 +338,7 @@
     position: absolute;
     overflow-y: auto;
     overflow-x: hidden;
-    padding: 70px 20px 53px 20px;
+    padding: 70px 20px  53px 20px;
 }
  .content .loading-tips {
     text-align: center;

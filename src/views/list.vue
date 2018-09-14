@@ -184,12 +184,14 @@
             if (res.data.status == 1) {
               console.log(res);
               var uuid = res.data.uuid;
+              var nickName = res.data.nick;
               var encrypted = res.data.sign;
               var key = res.data.times + 'tb0Atd';
               var token = this.decrypt(encrypted, key);
               var userInfo = new Object();
               userInfo.uuid = uuid;
               userInfo.token = token;
+              userInfo.nickName = nickName;
               localStorage.setItem('userInfo', JSON.stringify(userInfo));
               this.$toast.success('登录成功');
             }
