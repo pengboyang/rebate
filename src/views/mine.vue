@@ -5,8 +5,8 @@
         <div class="wraBox">
           <div class="left"><img src="../assets/img/touxiang.png" alt=""></div>
           <div class="right">
-            <div class="name">我是淘宝用户名</div>
-            <img src="../assets/img/taobaoshouqun.png" alt="">
+            <div class="name">{{nickName}}</div>
+            <img v-if="!tbLogin" src="../assets/img/taobaoshouqun.png" alt="">
           </div>
         </div>
       </div>
@@ -35,11 +35,21 @@
     export default{
       name:'mine',
       data(){
-        return{}
+        return{
+          nickName:'我是淘宝用户名',
+          tbLogin:false, 
+        }
       },
       components:{
         tabBar,
       },
+      created(){
+        let isLogin = this.isLogin();
+        if (isLogin) {
+          this.nickName = JSON.parse(localStorage.getItem('userInfo')).nickName;
+          this.tbLogin = true;
+        }
+      }
     }
 </script>
 <style>
@@ -71,7 +81,7 @@
   margin-bottom: 6px;
 }
 .mine .mine-top .wraBox .right img{
-  width: 50%;
+  width: 80px;
   height: auto;
   vertical-align: middle;
 }

@@ -42,14 +42,13 @@
         backTopShow: false,
         wrapperHeight: 0,
         page: {
-          offset: 1,
+          offset: 0,
           limit: 20
         }
       }
     },
     props: ['listdata'],
     created() {
-      this.moreList();
     },
     methods: {
       moreList() {
@@ -63,6 +62,7 @@
           }
         }).then(res => {
           if (res.status == 200) {
+            console.log(res);
             res.data.list.forEach(item => {
               let price = item.coupon_info.replace(/满/g, '').replace(/减/g, '$').split('$');
               item.reserve_price = item.zk_final_price;

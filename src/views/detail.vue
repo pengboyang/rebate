@@ -137,6 +137,7 @@
       this.zkfinalPrice = this.$route.query.zkfinalPrice;
       this.allTime = this.$route.query.allTime;
       this.goodDetail(this.goodId);
+      console.log(this.url)
     },
     methods:{
       back(){
