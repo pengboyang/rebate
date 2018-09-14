@@ -6,35 +6,48 @@
       <div v-if="choosePic" class="right" @click="cancelGoods">完成</div>
     </div>
     <div class="content">
-      <div class="wra" v-for="item in goodsLists">
-        <div v-if="choosePic" class="sircle" @click="choseEditBook(item.id)"><img v-if="choosegoodList.indexOf(item.id)>=0" src="../assets/img/xuanzhong.png" alt=""><div v-else class="box"></div></div>
-        <div class="left"><img :src="item.src" alt=""></div>
-        <div class="right">
-          <div class="top">
-            <img :style="{width:logoWidth}" src="../assets/img/taobaologo.png" alt="">
-            <span :style="{fontSize:textFont}">百搭迷你背包时尚小包双肩包</span>
-          </div>
-          <div class="Allprice">
-            <span class="currentPrice" :style="{fontSize:curFont}">券后价￥80</span>
-            <div  class="taobaoPrice" :class="{'scale':choosePic}">
-              <span>淘宝价</span>
-              <span>￥100</span>
+      <div class="page-infinite-wrapper" ref="wrapper" :style="{width:'100%', height: wrapperHeight + 'px' }">
+        <wv-group
+          v-infinite-scroll="loadMore"
+          infinite-scroll-disabled="loading"
+          infinite-scroll-distance="50"
+        >
+          <div class="wra" v-for="item in goodsLists">
+            <div v-if="choosePic" class="sircle" @click="choseEditBook(item.num_iid)"><img v-if="choosegoodList.indexOf(item.num_iid)>=0" src="../assets/img/xuanzhong.png" alt=""><div v-else class="box"></div></div>
+            <div class="left"><img :src="item.pictUrl" alt=""></div>
+            <div class="right" :style="{width:rightWidth}">
+              <div class="top">
+                <img :style="{width:logoWidth}" src="../assets/img/taobaologo.png" alt="">
+                <span :style="{fontSize:textFont}">{{item.title}}</span>
+              </div>
+              <div class="Allprice">
+                <span class="currentPrice" :style="{fontSize:curFont}">券后价￥{{item.zk_final_price}}</span>
+                <div  class="taobaoPrice" :class="{'scale':choosePic}">
+                  <span>淘宝价</span>
+                  <span>￥{{item.reserve_price}}</span>
+                </div>
+              </div>
+              <div v-if="!choosePic" class="bottom">20元券</div>
+              <div v-if="choosePic" class="bottoms"><span>20元券</span></div>
             </div>
           </div>
-          <div v-if="!choosePic" class="bottom">20元券</div>
-          <div v-if="choosePic" class="bottoms">20元券</div>
-        </div>
+        </wv-group>
+        <p v-show="loading" class="loading-tips">
+          <wv-spinner type="dot-circle" color="#444" :size="24"/>
+        </p>
       </div>
     </div>
     <tab-bar v-if="!choosePic"></tab-bar>
     <div v-if="choosePic" class="collectBottom">
         <div @click="checkedAll">全选</div>
-        <div>删除{{numbers}}</div>
+        <div @click="deleteGood">删除{{numbers}}</div>
     </div>
   </div>
 </template>
 <script>
   import tabBar from '../components/tabBar'
+  import { Toast } from 'we-vue'
+  import CryptoJS from 'crypto-js';
   export default{
     name:'collect',
     data(){
@@ -42,49 +55,43 @@
         choosePic:false,
         textFont:'14px',
         logoWidth:'16px',
-        curFont:'15px',
+        curFont:'14px',
+        rightWidth:'80%',
         choosegoodList:[],
         goodsLists:[
-          {
-            id:1,
-            src:require('../assets/img/goods.png'),
-          },
-          {
-            id:2,
-            src:require('../assets/img/goods.png'),
-          },
-          {
-            id:3,
-            src:require('../assets/img/goods.png'),
-          },
-          {
-            id:4,
-            src:require('../assets/img/goods.png'),
-          },
-          {
-            id:5,
-            src:require('../assets/img/goods.png'),
-          }
         ],
         numbers:0,
         isCheckedAll: false,
+        wrapperHeight:0,
+        loading: false,
+        page: {
+          offset: 0,
+          limit: 5
+        }
       }
     },
     components:{
       tabBar,
     },
+    created(){
+    },
+    mounted(){
+        this.wrapperHeight = document.documentElement.clientHeight - this.$refs.wrapper.getBoundingClientRect().top;
+    },
     methods:{
       manageGoods(){
         this.choosePic = true;
-        this.textFont='13px';
+        this.textFont='12px';
         this.logoWidth='14px';
-        this.curFont = '14px';
+        this.curFont = '12px';
+        this.rightWidth = '70%';
       },
       cancelGoods(){
         this.choosePic = false;
         this.textFont='14px';
         this.logoWidth='16px';
-        this.curFont='15px';
+        this.curFont='14px';
+        this.rightWidth = '80%';
         this.choosegoodList=[];
       },
       /*单选*/
@@ -110,8 +117,8 @@
           this.isCheckedAll = !this.isCheckedAll
           if (this.isCheckedAll) {
             this.choosegoodList = []
-            this.goodsLists.forEach(function (fruit) {
-              this.choosegoodList.push(fruit.id)
+            this.goodsLists.forEach(function (item) {
+              this.choosegoodList.push(item.num_iid)
             }, this)
           } else {
             this.choosegoodList = []
@@ -119,9 +126,78 @@
           this.numbers = '('+this.choosegoodList.length+')';
           console.log(this.choosegoodList)
       },
+      /*删除*/
+      deleteGood(){
+        if(this.choosegoodList.length==0){
+          Toast.text({
+            duration: 1000,
+            message: '请选择'
+          })
+          return false;
+        }
+        this.creatSiagn(this.apiUrl.favorDelFavor);
+        this.$http({
+          method:'post',
+          url:this.apiUrl.favorDelFavor,
+          data:{list:this.choosegoodList},
+          headers: {
+            'uuid': this.uuid,
+            'times': this.times,
+            'sign': this.saign,
+          },
+        }).then(res=>{
+          if(res.status==200){
+            console.log(res);
+            if(res.data.status==1){
+              Toast.text({
+                duration: 1000,
+                message: res.data.message
+              })
+              this.goodsLists=[];
+              this.page.offset=0;
+              this.page.limit=5;
+            }
+          }
+        }).catch();
+      },
+      /*加载更多*/
+      loadMore(){
+        let isLogin = this.isLogin();
+        if (isLogin) {
+          this.loading = true;
+          this.page.offset++;
+          this.collectList(this.page.offset,this.page.limit);
+        }
+      },
+      /*收藏列表*/
+      collectList(page,limit){
+        if(this.goodsLists.length==this.total){
+          this.loading = false;
+          return false;
+        }
+        this.creatSiagn(this.apiUrl.favorList);
+        this.$http({
+          method:'get',
+          url:this.apiUrl.favorList,
+          params:{offset:page,limit:limit},
+          headers: {
+            'uuid': this.uuid,
+            'times': this.times,
+            'sign': this.saign,
+          },
+        }).then(res=>{
+          if(res.status==200){
+            console.log(res);
+            this.goodsLists = this.goodsLists.concat(res.data.list);
+            this.total = res.data.total;
+            this.$nextTick(() => {
+              this.loading = false;
+            })
+          }
+        }).catch();
+      }
     }
   }
-  
 </script>
 <style>
 .collect .collectTopbar{
@@ -154,7 +230,7 @@
   top: 0;
 }
 .collect .content{
-  padding: 73px 20px 0 20px;
+  position: relative;
 }
 .collect .content .wra{
   display: -webkit-flex;
@@ -187,7 +263,7 @@
   vertical-align: middle;
 }
 .collect .content .wra .right{
-  width: 60%;
+  /* width: 80%; */
   padding-left: 17px;
 }
 .collect .content .wra .right .top{
@@ -198,18 +274,16 @@
   vertical-align: middle;
 }
 .collect .content .wra .right .top span{
-  font-weight: 700;
   vertical-align: middle;
 }
 .collect .content .wra .right .Allprice{
-  padding-top: 5px;
+  padding-top: 4%;
   display: -webkit-flex;
   display: flex;
   align-items: center;
 }
 .collect .content .wra .right .Allprice .currentPrice{
   color: #fe5500;
-  font-weight: 700;
 }
 .collect .content .wra .right .Allprice .taobaoPrice{
   font-size: 12px;
@@ -218,21 +292,10 @@
   text-align: right;
 }
 .scale{
-  transform: scale(.8,.8);
+  transform: scale(.9,.9);
 }
 .collect .content .wra .right .bottom{
-  width: 60px;
-  height: 18px;
-  font-size: 12px;
-  text-align: center;
-  background: url('../assets/img/vouchersBg.png') no-repeat;
-  background-size: 100% 100%;
-  color: #fff;
-  line-height: 17px;
-  margin-top: 10px;
-}
-.collect .content .wra .right .bottoms{
-  width: 52px;
+  width: 50px;
   height: 15px;
   font-size: 12px;
   text-align: center;
@@ -240,7 +303,22 @@
   background-size: 100% 100%;
   color: #fff;
   line-height: 15px;
-  margin-top: 10px;
+  margin-top: 4%;
+}
+.collect .content .wra .right .bottoms{
+  width: 40px;
+  height: 13px;
+  font-size: 12px;
+  text-align: center;
+  background: url('../assets/img/vouchersBg.png') no-repeat;
+  background-size: 100% 100%;
+  color: #fff;
+  line-height: 13px;
+  margin-top:4%;
+}
+.collect .content .wra .right .bottoms span{
+  display: inline-block;
+  transform: scale(.8,.8)
 }
 .collectBottom{
   width: 100%;
@@ -254,9 +332,18 @@
   background: #fff;
 }
 .collectBottom div{
-    border: 1px solid red;
-    padding: 2px 14px;
-    border-radius: 14px;
+  border: 1px solid red;
+  padding: 2px 14px;
+  border-radius: 14px;
 }
+.content .page-infinite-wrapper{
+    position: absolute;
+    overflow-y: auto;
+    overflow-x: hidden;
+    padding: 70px 20px 53px 20px;
+}
+ .content .loading-tips {
+    text-align: center;
+  }
 </style>
 

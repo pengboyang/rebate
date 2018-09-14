@@ -1,22 +1,10 @@
 <template>
   <div class="tabBar">
-    <div class="navBox">
-      <router-link to="/index">
-        <span class="icon icon-foo"></span>
-        <p>推荐</p>
-      </router-link>
-    </div>
-    <div class="navBox">
-      <router-link to="/collect">
-        <span class="icon icon-bar"></span>
-        <p>收藏</p>
-      </router-link>
-    </div>
-    <div class="navBox">
-      <router-link to="/detail">
-        <span class="icon icon-fb"></span>
-        <p>我的</p>
-      </router-link>
+    <div class="navBox" v-for="(item,index) in urlList" :key="index">
+      <div @click="goUrl(item.url,index)">
+        <span class="icon" :class="item.icon"></span>
+        <p :class="{active: $store.state.activeIndex === index}">{{item.name}}</p>
+      </div>
     </div>
   </div>
 </template>
@@ -27,30 +15,44 @@
     data() {
       return {
         value: '',
+        urlList:[
+          {
+            url:'/index',
+            name:'推荐',
+            icon:'icon-foo'
+          },
+          {
+            url:'/collect',
+            name:'收藏',
+            icon:'icon-bar'
+          },
+          {
+            url:'/mine',
+            name:'我的',
+            icon:'icon-fb'
+          }
+        ],
+        activeIndex:0
       }
     },
     computed: {},
+    created(){
+      console.log(this.$store.state.activeIndex);
+    },
     methods: {
-      my() {
-        let isLogin = this.isLogin();
-        if (isLogin) {
-          this.$toast.text({
-            duration: 1000,
-            message: '您已登录'
-          });
-          return false;
-        }
-        this.$http({
-          method: 'get',
-          url: this.apiUrl.userAuth,
-        }).then(res => {
-          if (res.status == 200) {
-            let url = res.data.url;
-            url = url + '&view=wap';
-            this.goTaobao(url);
-            // location.href=url;
+      goUrl(url,index) {
+        if(url!='/collect'){
+          this.$router.push({path:url});
+          this.$store.state.activeIndex = index;
+        }else{
+          let isLogin = this.isLogin();
+          if (isLogin) {
+            this.$router.push({path:url});
+            this.$store.state.activeIndex = index;
+            return false;
           }
-        }).catch()
+          this.getUserUuid();
+        }  
       }
     }
   }
@@ -128,15 +130,7 @@
     line-height: 12px;
   }
 
-  .router-link-active p {
+ .active { 
     color: red;
-  }
-
-  .router-link-active p {
-    color: red;
-  }
-
-  .router-link-active p {
-    color: red;
-  }
+ }
 </style>

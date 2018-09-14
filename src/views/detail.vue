@@ -26,24 +26,24 @@
         <div class="commodityPrice">
           <div class="nums">
             <span class="taobao">淘宝价</span>
-            <span class="tbPrice">￥{{reserve_price}}</span>
+            <span class="tbPrice">￥{{reservePrice}}</span>
             <span class="baoyou">包邮</span>
             <span class="xiaoliang">月销量</span>
             <span class="tbNums">{{volume}}</span>
           </div>
           <div class="Allprice">
             <span class="currentPrice">券后价</span>
-            <span class="currentPrice1">￥{{zk_final_price}}</span>
+            <span class="currentPrice1">￥{{zkfinalPrice}}</span>
           </div>
         </div>
       </div>
       <div class="vouchers">
         <div class="picBox">
           <img src="../assets/img/vouchersBg.png" alt="">
-          <div class="contetBox">
+          <div class="contetBox" @click="goTaobao(url)">
             <div class="left">
-              <div class="money">20元优惠券</div>
-              <div class="expiryDat">使用期限：<span>2018.8.30-2018.08.31</span></div>
+              <div class="money">{{couponPrice}}元优惠券</div>
+              <div class="expiryDat">使用期限：<span>{{allTime}}</span></div>
             </div>
             <div class="right">立即领券</div>
           </div>
@@ -57,7 +57,7 @@
     <div class="bottom">
       <div @click="collection"><img class="img1" src="../assets/img/shoucang.png" alt=""><div class="text">收藏</div></div>
       <div @click="showPop"><img class="img2" src="../assets/img/fenxiang.png" alt=""><div class="text">分享宝贝</div></div>
-      <div>领券购买<span class="price">￥20</span></div>
+      <div @click="goTaobao(url)">领券购买<span class="price">￥{{zkfinalPrice}}</span></div>
     </div>
     <wv-popup :visible.sync="popupVisible2" :height="180">
       <div class="popTitle">分享到</div>
@@ -75,9 +75,11 @@
   </div>
 </template>
 <script>
+  import CryptoJS from 'crypto-js';
   import { Header } from 'we-vue';
   import { Popup } from 'we-vue'
   import { Lazyload } from 'we-vue'
+  import { Toast } from 'we-vue'
   export default{
     name:'detail',
     data(){
@@ -108,8 +110,14 @@
         picInfoList:[],
         title:'',
         volume:'',
-        reserve_price:'',
-        zk_final_price:''
+        url:'',
+        sTime:'',
+        eTime:'',
+        couponInfo:'',
+        couponPrice:'',
+        reservePrice:'',
+        zkfinalPrice:'',
+        allTime:'',
       }
     },
     watch:{
@@ -120,6 +128,14 @@
     },
     created(){
       this.goodId = this.$route.query.id;
+      this.url = this.$route.query.url;
+      this.sTime = this.$route.query.sTime;
+      this.eTime = this.$route.query.eTime;
+      this.couponInfo = this.$route.query.couponInfo;
+      this.couponPrice = this.$route.query.couponPrice;
+      this.reservePrice = this.$route.query.reservePrice;
+      this.zkfinalPrice = this.$route.query.zkfinalPrice;
+      this.allTime = this.$route.query.allTime;
       this.goodDetail(this.goodId);
     },
     methods:{
@@ -140,9 +156,7 @@
             this.bigPic = res.data.pictUrl;
             this.picInfoList = res.data.small_images;
             this.title = res.data.title;
-            this.zk_final_price = res.data.zk_final_price;
             this.volume = res.data.volume;
-            this.reserve_price = res.data.reserve_price;
           }
         }).catch()
       },
@@ -167,12 +181,54 @@
         this.top = Math.floor($('.info').offset().top-50+ $('.detail').scrollTop());
         this.loopHeight = Math.floor($('.loopWra').height());
       },
-      collection(){
-        this.$http({
-          method:'get',
-          url:this.apiUrl.favorAddFavor,
-          params:{}
-        }).then().catch();
+      collection() {
+        let isLogin = this.isLogin();
+        if (isLogin) {
+          this.creatSiagn(this.apiUrl.favorAddFavor);
+          this.$http({
+            method:'post',
+            url:this.apiUrl.favorAddFavor,
+            data:{
+              couponClickUrl :this.url,
+              couponEndTime  :this.eTime,
+              couponInfo  :this.couponInfo,
+              couponPrice  :this.couponPrice,
+              couponStartTime  :this.sTime,
+              numIid  :this.goodId,
+              picUrl  :this.bigPic,
+              reservePrice  :this.reservePrice,
+              title  :this.title,
+              zkFinalPrice  :this.zkfinalPrice ,
+            },
+            headers: {
+                'uuid': this.uuid,
+                'times': this.times,
+                'sign': this.saign,
+            },
+          }).then(res=>{
+            if(res.status==200){
+              console.log(res);
+              if(res.data.status==1){
+                Toast.text({
+                  duration: 1000,
+                  message: res.data.message
+                })
+              }else if(res.data.status==0){
+                Toast.text({
+                  duration: 1000,
+                  message: res.data.message
+                })
+              }else{
+                Toast.text({
+                  duration: 1000,
+                  message: res.data.message
+                })
+              }
+            }
+          }).catch();
+          return false;
+        }
+        this.getUserUuid();
       }
     }
   }

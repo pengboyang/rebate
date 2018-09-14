@@ -11,7 +11,7 @@
           infinite-scroll-disabled="loading"
           infinite-scroll-distance="50"
         >
-          <div class="col2Wra lazyload-list-item" @click="goDetail(item.num_iid,item.coupon_click_url)"
+          <div class="col2Wra lazyload-list-item" @click="goDetail(item.num_iid,item.coupon_click_url,item.coupon_start_time,item.coupon_end_time,item.coupon_info,item.couponPrice,item.reserve_price,item.zk_final_price,item.coupon_all_time)"
                v-for="item in listdata.list">
             <div class="col2Pic "><img v-lazy="item.pictUrl" :key="item.pictUrl" class="lazyload-image" alt=""></div>
             <div class="col2Name">{{item.title}}</div>
@@ -75,9 +75,8 @@
           }
         }).catch()
       },
-      goDetail(id, url) {
-        // var w = plus.webview.open(url, 'taobao');
-        this.$router.push({path: '/detail', query: {id: id}});
+      goDetail(id, url,sTime,eTime,couponInfo,couponPrice,reservePrice,zkfinalPrice,allTime) {
+        this.$router.push({path: '/detail', query: {id: id,url:url,sTime:sTime,eTime:eTime,couponInfo:couponInfo,couponPrice:couponPrice,reservePrice:reservePrice,zkfinalPrice:zkfinalPrice,allTime:allTime}});
       },
       loadMore() {
         this.loading = true;
