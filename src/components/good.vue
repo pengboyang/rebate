@@ -1,7 +1,7 @@
 <template>
   <div class="manContent">
     <div class="col2 lazyload-list">
-      <div class="page-infinite-wrapper" ref="wrapper" :style="{width:'100%', height: wrapperHeight + 'px',paddingTop:'60px' }">
+      <div class="page-infinite-wrapper" ref="wrapper" :style="{width:'100%', height: wrapperHeight + 'px',paddingTop:'50px' }">
         <wv-group
           v-infinite-scroll="loadMore"
           infinite-scroll-disabled="loading"

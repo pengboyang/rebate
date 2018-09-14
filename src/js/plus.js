@@ -53,7 +53,7 @@ import {Dialog} from 'we-vue'
       } else {
         var fileHref = window.location.href;
         console.log(fileHref);
-        var reg = RegExp(/#\/(index||collect||mine)/g);
+        var reg = RegExp(/#\/(index|collect|mine)/g);
         if (reg.test(fileHref)) {
           //首次按键，提示‘再按一次退出应用’
           if (!first) {
