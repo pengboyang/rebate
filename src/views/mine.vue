@@ -6,7 +6,7 @@
           <div class="left"><img src="../assets/img/touxiang.png" alt=""></div>
           <div class="right">
             <div class="name">{{nickName}}</div>
-            <img v-if="!tbLogin" src="../assets/img/taobaoshouqun.png" alt="">
+            <img v-if="!tbLogin" @click="getUserUuid" src="../assets/img/taobaoshouqun.png" alt="">
           </div>
         </div>
       </div>
