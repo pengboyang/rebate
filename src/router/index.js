@@ -44,5 +44,25 @@ export default [
     name: 'collect',
     component: resolve => require(['views/collect'], resolve),
   },
+  {
+    meta: {
+      title: '我的',
+      keepAlive: false,
+      isBack: false,
+    },
+    path: '/mine',
+    name: 'mine',
+    component: resolve => require(['views/mine'], resolve),
+  },
+  {
+    meta: {
+      title: '登陆',
+      keepAlive: false,
+      isBack: false,
+    },
+    path: '/login',
+    name: 'login',
+    component: resolve => require(['views/login'], resolve),
+  },
 
 ];

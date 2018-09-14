@@ -5,7 +5,7 @@
       <span class="moreList" @click="moreList">更多></span>
     </div>
     <div class="manNovel">
-      <div class="novelWra" @click="goDetail(item.num_iid,item.coupon_click_url)" v-for="item in listdata.list">
+      <div class="novelWra" @click="goDetail(item.num_iid,item.coupon_click_url,item.coupon_start_time,item.coupon_end_time,item.coupon_info,item.couponPrice,item.reserve_price,item.zk_final_price,item.coupon_all_time)" v-for="item in listdata.list">
         <div class="novelPic"><img :src="item.pictUrl" alt=""></div>
         <div class="novelName">{{item.title}}</div>
         <div class="price"><span>券后</span><em>¥</em>{{item.zk_final_price}}</div>
@@ -29,9 +29,8 @@
       moreList() {
         this.$router.push({path: '/more', query: {id: this.listdata.select, name: this.listdata.name}});
       },
-      goDetail(id, url) {
-        // var w = plus.webview.open(url, 'taobao');
-        this.$router.push({path: '/detail', query: {id: id}});
+      goDetail(id, url,sTime,eTime,couponInfo,couponPrice,reservePrice,zkfinalPrice,allTime) {
+        this.$router.push({path: '/detail', query: {id: id,url:url,sTime:sTime,eTime:eTime,couponInfo:couponInfo,couponPrice:couponPrice,reservePrice:reservePrice,zkfinalPrice:zkfinalPrice,allTime:allTime}});
       }
     }
   }

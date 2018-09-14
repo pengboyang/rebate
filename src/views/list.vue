@@ -29,6 +29,7 @@
   import hot from '../components/hot'
   import topBar from '../components/topbar'
   import tabBar from '../components/tabBar'
+  import CryptoJS from 'crypto-js';
 
   export default {
     name: 'manList',
@@ -120,6 +121,7 @@
       //   plus.webview.close(otherView);
       // }
       let query = this.getCode();
+      console.log(query);
       let isLogin = this.isLogin();
       if (!isLogin && query && query.code) {
         this.login(query);
@@ -127,6 +129,7 @@
       for (let key in this.listdata) {
         this.getlist(key);
       }
+      this.serviceTime();
     },
     methods: {
       manPageList() {
@@ -155,8 +158,12 @@
           if (res.status == 200) {
             res.data.list.forEach(item => {
               let price = item.coupon_info.replace(/满/g, '').replace(/减/g, '$').split('$');
+              let stime = item.coupon_start_time.replace(/-/g,'.');
+              let etime = item.coupon_end_time.replace(/-/g,'.');
+              item.coupon_all_time = stime+'-'+etime;
               item.reserve_price = item.zk_final_price;
               item.zk_final_price = item.zk_final_price >= parseInt(price[0]) ? (item.zk_final_price - parseInt(price[1])).toFixed(2) : item.zk_final_price;
+              item.couponPrice = parseInt(price[1]);
             })
             this.listdata[key].list = res.data.list;
 
@@ -174,14 +181,21 @@
           params: {code: obj.code}
         }).then(res => {
           if (res.status == 200) {
-            let data = res.data;
-            if (data.status == 1) {
-              localStorage.setItem('userInfo', JSON.stringify(data));
+            if (res.data.status == 1) {
+              console.log(res);
+              var uuid = res.data.uuid;
+              var encrypted = res.data.sign;
+              var key = res.data.times + 'tb0Atd';
+              var token = this.decrypt(encrypted, key);
+              var userInfo = new Object();
+              userInfo.uuid = uuid;
+              userInfo.token = token;
+              localStorage.setItem('userInfo', JSON.stringify(userInfo));
               this.$toast.success('登录成功');
             }
           }
         }).catch()
-      }
+      },
     },
     mounted() {
     }

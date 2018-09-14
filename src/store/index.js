@@ -8,6 +8,7 @@ Vue.use(vuex);
 export default new vuex.Store({
     /*全局状态*/
     state: {
+        activeIndex:0,
     },
     /*局部状态*/
     modules:{

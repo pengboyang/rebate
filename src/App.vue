@@ -5,6 +5,7 @@
 </template>
 
 <script>
+  import '@/js/vconsole.min.js';
   export default {
     name: 'App'
   }
