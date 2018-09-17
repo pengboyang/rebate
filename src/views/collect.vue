@@ -27,8 +27,8 @@
                   <span>￥{{item.reserve_price}}</span>
                 </div>
               </div>
-              <div v-if="!choosePic" class="bottom">20元券</div>
-              <div v-if="choosePic" class="bottoms"><span>20元券</span></div>
+              <div v-if="!choosePic" class="bottom">{{item.reserve_price-item.zk_final_price}}元券</div>
+              <div v-if="choosePic" class="bottoms"><span>{{item.reserve_price-item.zk_final_price}}元券</span></div>
             </div>
           </div>
         </wv-group>

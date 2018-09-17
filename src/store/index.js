@@ -9,6 +9,8 @@ export default new vuex.Store({
     /*全局状态*/
     state: {
         activeIndex:0,
+        deviceuuid:'864035034842337',//设备uuid
+        devicemodel:'设备型号',
     },
     /*局部状态*/
     modules:{

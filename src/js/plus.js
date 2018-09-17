@@ -18,8 +18,8 @@ import {Dialog} from 'we-vue'
     // 获取设备信息IMEI
     // console.log( "IMEI: " + plus.device.imei );
     // localStorage.setItem('imei', plus.device.uuid.split(',')[0]);
-    // store.state.deviceuuid = plus.device.uuid.split(',')[0];
-    // store.state.devicemodel = plus.device.model;
+    store.state.deviceuuid = plus.device.uuid.split(',')[0];
+    store.state.devicemodel = plus.device.model;
     // store.state.platForm = plus.os.name.toLowerCase();
     // 获取本地应用资源版本号
     plus.runtime.getProperty(plus.runtime.appid, function (inf) {

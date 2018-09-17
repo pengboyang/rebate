@@ -121,9 +121,9 @@
       //   plus.webview.close(otherView);
       // }
       let query = this.getCode();
-      console.log(query);
-      let isLogin = this.isLogin();
-      if (!isLogin && query && query.code) {
+      let isLogin = this.tbLogin();
+      if (!isLogin&&query && query.code) {
+        console.log(1)
         this.login(query);
       }
       for (let key in this.listdata) {
@@ -183,17 +183,9 @@
           if (res.status == 200) {
             if (res.data.status == 1) {
               console.log(res);
-              var uuid = res.data.uuid;
-              var nickName = res.data.nick;
-              var encrypted = res.data.sign;
-              var key = res.data.times + 'tb0Atd';
-              var token = this.decrypt(encrypted, key);
-              var userInfo = new Object();
-              userInfo.uuid = uuid;
-              userInfo.token = token;
-              userInfo.nickName = nickName;
-              localStorage.setItem('userInfo', JSON.stringify(userInfo));
-              this.$toast.success('登录成功');
+              var data = res.data;
+              localStorage.setItem('userInfoTb', JSON.stringify(data));
+              this.$toast.success('淘宝授权成功');
             }
           }
         }).catch()

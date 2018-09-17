@@ -41,7 +41,7 @@
     },
     methods: {
       goUrl(url,index) {
-        if(url!='/collect'){
+        if(url!='/collect'&&url!='/mine'){
           this.$router.push({path:url});
           this.$store.state.activeIndex = index;
         }else{
@@ -51,7 +51,7 @@
             this.$store.state.activeIndex = index;
             return false;
           }
-          this.getUserUuid();
+          this.$router.push({path:'/login'})
         }  
       }
     }
