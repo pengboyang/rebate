@@ -26,7 +26,7 @@
     },
     created(){
       this.serviceTime();
-      console.log(this.$route);
+      // console.log(this.$route);
     },
     methods:{
       goback(){
