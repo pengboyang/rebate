@@ -1,13 +1,16 @@
 <template>
-  <div class="login">
-    <div class="loginBack" @click="goback"><img src="../assets/img/loginzback.png" alt=""></div>
-    <div class="loginText"><img src="../assets/img/loginTetx.png" alt=""></div>
-    <div class="content">
-      <div class="wra">
-        <div class="comen"><img class="imgone" src="../assets/img/phone.png" alt=""><input type="text" placeholder="请输入手机号" v-model="phoneNumber"></div>
-        <div class="comen"><img class="imgtwo" src="../assets/img/lock.png" alt=""><input placeholder="请输入验证码" type="text" v-model="yzmNumer"><div @click="sendCode" ref="time" class="yzm">获取验证码</div></div>
+  <div>
+    <div class="bg"><img src="../assets/img/LOGINbg.png" alt=""></div>
+    <div class="login">
+      <div class="loginBack" @click="goback"><img src="../assets/img/loginzback.png" alt=""></div>
+      <div class="loginText"><img src="../assets/img/loginTetx.png" alt=""></div>
+      <div class="content">
+        <div class="wra">
+          <div class="comen"><img class="imgone" src="../assets/img/phone.png" alt=""><input type="text" placeholder="请输入手机号" v-model="phoneNumber"></div>
+          <div class="comen"><img class="imgtwo" src="../assets/img/lock.png" alt=""><input placeholder="请输入验证码" type="text" v-model="yzmNumer"><div @click="sendCode" ref="time" class="yzm">获取验证码</div></div>
+        </div>
+        <div class="loginbtn" @click="openIndicatorWithText"><img src="../assets/img/loginBtn.png" alt=""></div>
       </div>
-      <div class="loginbtn" @click="openIndicatorWithText"><img src="../assets/img/loginBtn.png" alt=""></div>
     </div>
   </div>
 </template>
@@ -159,9 +162,26 @@
   }
 </script>
 <style>
+  .bg{
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+  }
+  .bg img{
+    width: 100%;
+    height: auto;
+    vertical-align: middle;
+  }
   .login{
-    background: url('../assets/img/LOGINbg.png');
-    background-size: 100% 100%;
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    left: 0;
+    top: 0;
+    /* background: url('../assets/img/LOGINbg.png');
+    background-size: 100% 100%; */
   }
   .login .loginBack{
     width: 45px;
