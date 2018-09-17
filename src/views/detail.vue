@@ -229,7 +229,7 @@
           }).catch();
           return false;
         }
-        this.getUserUuid();
+        this.$router.push({path:'/login'});
       }
     }
   }

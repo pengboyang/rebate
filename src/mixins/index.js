@@ -11,7 +11,9 @@ var mixin = {
         favorAddFavor: '/tbk/api/favor/addFavor',
         favorList:'/tbk/api/favor/list',
         favorDelFavor:'/tbk/api/favor/delFavor',
-        userTime:'/tbk/api/user/time'
+        userTime:'/tbk/api/user/time',
+        userGetcode:'/tbk/api/user/getcode',
+        userLogin:'/tbk/api/user/login'
       }
     };
   },
@@ -76,6 +78,14 @@ var mixin = {
     /*登录状态*/
     isLogin() {
       let userInfo = JSON.parse(localStorage.getItem('userInfo')) || {};
+      if (userInfo.uuid) {
+        return true;
+      } else {
+        return false;
+      }
+    },
+    tbLogin() {
+      let userInfo = JSON.parse(localStorage.getItem('userInfoTb')) || {};
       if (userInfo.uuid) {
         return true;
       } else {

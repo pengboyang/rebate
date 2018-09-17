@@ -6,7 +6,7 @@
           <div class="left"><img src="../assets/img/touxiang.png" alt=""></div>
           <div class="right">
             <div class="name">{{nickName}}</div>
-            <img v-if="!tbLogin" @click="getUserUuid" src="../assets/img/taobaoshouqun.png" alt="">
+            <img v-if="tbLogins" @click="getUserUuid" src="../assets/img/taobaoshouqun.png" alt="">
           </div>
         </div>
       </div>
@@ -32,12 +32,13 @@
 </template>
 <script>
     import tabBar from '../components/tabBar'
+    import { Toast } from 'we-vue'
     export default{
       name:'mine',
       data(){
         return{
           nickName:'我是淘宝用户名',
-          tbLogin:false, 
+          tbLogins:true, 
         }
       },
       components:{
@@ -45,10 +46,15 @@
       },
       created(){
         let isLogin = this.isLogin();
+        let tbLogin = this.tbLogin();
         if (isLogin) {
           this.nickName = JSON.parse(localStorage.getItem('userInfo')).nickName;
-          this.tbLogin = true;
         }
+        if(tbLogin){
+          this.tbLogins = false;
+        }
+      },
+      methods:{
       }
     }
 </script>
@@ -81,7 +87,7 @@
   margin-bottom: 6px;
 }
 .mine .mine-top .wraBox .right img{
-  width: 80px;
+  width: 75px;
   height: auto;
   vertical-align: middle;
 }
