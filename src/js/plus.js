@@ -2,7 +2,7 @@ import store from '@/store';
 import {Dialog} from 'we-vue'
 
 (function (w) {
-  var checkUrl = 'http://test.moth123.cn/rebate/js/updateDev.json?v=' + Date.parse(new Date()); // 检测更新 地址是自己服务器检测的地址根据自己项目填写
+  var checkUrl = 'http://s.55duanzi.com/rebate/js/update.json?v=' + Date.parse(new Date()); // 检测更新 地址是自己服务器检测的地址根据自己项目填写
   var downloadWgtUrl = null; // 升级包目录
   var downloadApkUrl = null; // 升级包目录
   var iosURL = null; // 苹果地址
@@ -18,8 +18,8 @@ import {Dialog} from 'we-vue'
     // 获取设备信息IMEI
     // console.log( "IMEI: " + plus.device.imei );
     // localStorage.setItem('imei', plus.device.uuid.split(',')[0]);
-    // store.state.deviceuuid = plus.device.uuid.split(',')[0];
-    // store.state.devicemodel = plus.device.model;
+    store.state.deviceuuid = plus.device.uuid.split(',')[0];
+    store.state.devicemodel = plus.device.model;
     // store.state.platForm = plus.os.name.toLowerCase();
     // 获取本地应用资源版本号
     plus.runtime.getProperty(plus.runtime.appid, function (inf) {
