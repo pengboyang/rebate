@@ -168,6 +168,7 @@
     top: 0;
     width: 100%;
     height: 100%;
+    background: rgb(241,94,10);
   }
   .bg img{
     width: 100%;
