@@ -63,6 +63,10 @@
               let price = item.coupon_info.replace(/满/g, '').replace(/减/g, '$').split('$');
               item.reserve_price = item.zk_final_price;
               item.zk_final_price = item.zk_final_price >= parseInt(price[0]) ? (item.zk_final_price - parseInt(price[1])).toFixed(2) : item.zk_final_price;
+              let stime = item.coupon_start_time.replace(/-/g,'.');
+              let etime = item.coupon_end_time.replace(/-/g,'.');
+              item.coupon_all_time = stime+'-'+etime;
+              item.couponPrice = parseInt(price[1]);
             });
             this.listdata.list = this.listdata.list.concat(res.data.list);
             this.$nextTick(() => {
