@@ -44,7 +44,7 @@
     width: 100%;
     height: 100%;
     -webkit-overflow-scrolling: touch;
-    padding-bottom: 53px;
+    /*padding-bottom: 53px;*/
     box-sizing: border-box;
     position: absolute;
     left: 0;
@@ -90,5 +90,11 @@
   }
   .weui-toast{
     top:60%!important;
+  }
+  .loading-tips{
+    text-align: center;
+  }
+  .weui-cells:after{
+    border-bottom: 0!important;
   }
 </style>

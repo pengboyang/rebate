@@ -207,10 +207,6 @@
     overflow-x: hidden;
   }
 
-  .loading-tips {
-    text-align: center;
-  }
-
   .weui-cells:before {
     border: 0 !important;
   }
