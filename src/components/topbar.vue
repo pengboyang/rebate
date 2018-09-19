@@ -33,6 +33,9 @@
       },
       onCancel() {
         // 自定义取消事件处理
+      },
+      goSearch(){
+        this.$router.push({path:'/searchs'});
       }
     }
   }
