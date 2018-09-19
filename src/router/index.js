@@ -64,5 +64,25 @@ export default [
     name: 'login',
     component: resolve => require(['views/login'], resolve),
   },
+  {
+    meta: {
+      title: '搜索',
+      keepAlive: false,
+      isBack: false,
+    },
+    path: '/searchs',
+    name: 'searchs',
+    component: resolve => require(['views/searchs'], resolve),
+  },
+  {
+    meta: {
+      title: '更多分类',
+      keepAlive: false,
+      isBack: false,
+    },
+    path: '/recommendation',
+    name: 'recommendation',
+    component: resolve => require(['views/recommendation'], resolve),
+  },
 
 ];

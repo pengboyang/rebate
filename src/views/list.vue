@@ -25,7 +25,7 @@
     <p v-show="loading" class="loading-tips">
       <wv-spinner type="dot-circle" color="#444" :size="24"/>
     </p>
-    <!--<wv-loadmore type="line" text="这就是我的底线"></wv-loadmore>-->
+    <wv-loadmore type="line" text="省钱多"></wv-loadmore>
   </div>
 </template>
 <script>
@@ -115,7 +115,7 @@
             title: '更多分类',
             url: require('../assets/img/icon_5.png'),
             name: '精品推荐',
-            select: '女装'
+            select: '更多分类'
           },
         ],
         sweiperList: [],
@@ -199,7 +199,11 @@
         }).catch()
       },
       toolbar(name, select) {
-        this.$router.push({path: '/more', query: {id: select, name: name}});
+        if(select=='更多分类'){
+          this.$router.push({path:'/recommendation',query:{id: select}});
+        }else{
+          this.$router.push({path: '/more', query: {id: select, name: name}});
+        }
       },
       /*登录*/
       login(obj) {
