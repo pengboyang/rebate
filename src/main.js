@@ -20,7 +20,7 @@ Vue.use(VueRouter);
 Vue.mixin(Mixin);
 Vue.use(VueLazyLoad,{
   // error:'./static/error.png',
-  // loading:require('./assets/img/videoPause.png')
+  loading:require('./assets/img/lazy.png')
 });
 Vue.config.productionTip = false;
 // Vue.config.debug = true;/*异常捕捉*/

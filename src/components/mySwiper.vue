@@ -38,7 +38,7 @@
     position: relative;
     top: 0;
     left: 0;
-    padding-top: 50px;
+    padding-top: 30px;
     box-sizing: border-box;
   }
 
@@ -66,7 +66,7 @@
   }
 
   .weui-grid {
-    padding: 15px 15px;
+    padding: 5px 10px 5px!important;
   }
 </style>
 

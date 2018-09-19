@@ -185,6 +185,7 @@
               item.reserve_price = item.zk_final_price;
               item.zk_final_price = item.zk_final_price >= parseInt(price[0]) ? (item.zk_final_price - parseInt(price[1])).toFixed(2) : item.zk_final_price;
               item.couponPrice = parseInt(price[1]);
+              item.pictUrl = item.pictUrl+'_200x200.jpg';
             });
             if(key=='good')
               this.listdata[key].list = this.listdata[key].list.concat(res.data.list);
