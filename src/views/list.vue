@@ -25,7 +25,7 @@
     <p v-show="loading" class="loading-tips">
       <wv-spinner type="dot-circle" color="#444" :size="24"/>
     </p>
-    <wv-loadmore type="line" text="省钱多"></wv-loadmore>
+    <wv-loadmore type="line" text="省钱买"></wv-loadmore>
   </div>
 </template>
 <script>

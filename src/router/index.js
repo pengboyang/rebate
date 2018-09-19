@@ -6,7 +6,7 @@ export default [
   },
   {
     meta: {
-      title: '省钱多多',
+      title: '省钱买',
       keepAlive: false,
       isBack: false,
     },

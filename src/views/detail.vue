@@ -50,7 +50,7 @@
         </div>
         <div class="info">
           <p>宝贝详情</p>
-          <div class="picWra" v-for="item in picInfoList"><img :src="item" alt=""></div>
+          <div class="picWra" v-for="item in picInfoList"><img :src="item+'_400x400.jpg'" alt=""></div>
         </div>
       </div>
     </div>
@@ -154,7 +154,7 @@
         }).then(res=>{
           if(res.status==200){
             console.log(res);
-            this.bigPic = res.data.pictUrl;
+            this.bigPic = res.data.pictUrl+'_400x400.jpg';
             this.picInfoList = res.data.small_images;
             this.title = res.data.title;
             this.volume = res.data.volume;
