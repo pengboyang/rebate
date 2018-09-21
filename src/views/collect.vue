@@ -198,6 +198,10 @@
   }
 </script>
 <style>
+.collect{
+  overflow-x: auto;
+  overflow-y: auto;
+}
 .collect .collectTopbar{
   width: 100%;
   height: 50px;
