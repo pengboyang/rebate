@@ -83,7 +83,6 @@
     width: 100%;
     height: 100%;
     -webkit-overflow-scrolling: touch;
-    /*padding-bottom: 53px;*/
     box-sizing: border-box;
     position: absolute;
     left: 0;
