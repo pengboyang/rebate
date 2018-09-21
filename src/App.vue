@@ -49,8 +49,6 @@
     position: absolute;
     left: 0;
     top: 0;
-    overflow-y: auto;
-    overflow-x: hidden;
   }
 
   .bookDetail {

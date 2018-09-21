@@ -96,10 +96,10 @@
             select: '童装'
           },
           {
-            title: '更多分类',
-            url: require('../assets/img/icon_5.png'),
-            name: '精品推荐',
-            select: '更多分类'
+            title: '休闲零食',
+            url: require('../assets/img/bangbangtang.png'),
+            name: '休闲零食',
+            select: '休闲零食'
           },
         ],
         sweiperList: [],
@@ -171,11 +171,7 @@
         }).catch()
       },
       toolbar(name, select) {
-        if(select=='更多分类'){
-          this.$router.push({path:'/recommendation',query:{id: select}});
-        }else{
           this.$router.push({path: '/more', query: {id: select, name: name}});
-        }
       },
       /*登录*/
       login(obj) {
@@ -200,6 +196,10 @@
   }
 </script>
 <style>
+  .manList{
+    overflow-x: auto;
+    overflow-y: auto;
+  }
   .weui-grid {
     width: 25% !important;
   }

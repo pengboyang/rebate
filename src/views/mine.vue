@@ -163,6 +163,10 @@
   /* 触发 hasLayout */ 
   zoom: 1; 
 }
+.mine{
+  overflow-x: auto;
+  overflow-y: auto;
+}
 .mine .minewra .mine-top{
   width: 100%;
   position: relative;
