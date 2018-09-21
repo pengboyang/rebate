@@ -49,7 +49,7 @@
     left: 0;
     top: 0;
     background: url('../assets/img/topBg.jpg') repeat-y;
-    background-size: 100%;
+    background-size: 100% 100%;
     z-index: 999;
     font-family: 'noto';
     display: flex;

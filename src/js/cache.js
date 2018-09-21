@@ -1,5 +1,5 @@
 const SEARCH_KEY='_search_'  
-const SEARCH_MAX_LENGTH=15  
+const SEARCH_MAX_LENGTH=30  
 /*插入方法     arr存储的数据  val传入存储的值  compare前后比较的函数  maxlen存入的最大值*/  
 function insertArray(arr,val,compare,maxlen){  
     //findIndex()函数也是查找目标元素，找到就返回元素的位置，找不到就返回-1。  
