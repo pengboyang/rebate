@@ -27,46 +27,40 @@
             id:'热门分类',
             toolbarList: [
               {
-                title: '女装',
-                url: require('../assets/img/icon_1.png'),
-                name: '女装尖货',
-                select: '女装'
-              },
-              {
-                title: '美妆洗护',
-                url: require('../assets/img/icon_2.png'),
-                name: '美妆洗护',
-                select: '美妆'
-              },
-              {
-                title: '男装',
-                url: require('../assets/img/icon_4.png'),
-                name: '精品男装',
-                select: '男装'
-              },
-              {
-                title: '母婴',
-                url: require('../assets/img/icon_8.png'),
-                name: '母婴',
-                select: '母婴'
-              },
-              {
-                title: '鞋包配饰',
-                url: require('../assets/img/icon_6.png'),
-                name: '鞋包配饰',
-                select: '女鞋'
-              },
-              {
-                title: '内衣',
-                url: require('../assets/img/icon_7.png'),
-                name: '内衣',
+                title: '女士内衣',
+                url: require('../assets/img/dapaiwenxiong.png'),
+                name: '女士内衣',
                 select: '女士内衣'
               },
               {
-                title: '童装',
-                url: require('../assets/img/icon_3.png'),
-                name: '童装',
-                select: '童装'
+                title: '潮牌男装',
+                url: require('../assets/img/chaopainanzhuang.png'),
+                name: '潮牌男装',
+                select: '潮牌男装'
+              },
+              {
+                title: '彩妆',
+                url: require('../assets/img/caizhuang.png'),
+                name: '彩妆',
+                select: '彩妆'
+              },
+              {
+                title: '洗护',
+                url: require('../assets/img/xihu.png'),
+                name: '洗护',
+                select: '洗护'
+              },
+              {
+                title: '面部护肤',
+                url: require('../assets/img/mianbuhufu.png'),
+                name: '面部护肤',
+                select: '面部护肤'
+              },
+              {
+                title: '面膜',
+                url: require('../assets/img/mianmo.png'),
+                name: '面膜',
+                select: '面膜'
               },
             ],
           },
@@ -174,46 +168,52 @@
             id:'母婴童装',
             toolbarList: [
               {
-                title: '女装',
-                url: require('../assets/img/icon_1.png'),
-                name: '女装尖货',
-                select: '女装'
+                title: '妈妈专区',
+                url: require('../assets/img/mamazhuanqu.png'),
+                name: '妈妈专区',
+                select: '妈妈专区'
               },
               {
-                title: '美妆洗护',
-                url: require('../assets/img/icon_2.png'),
-                name: '美妆洗护',
-                select: '美妆'
+                title: '尿不湿',
+                url: require('../assets/img/niaobusi.png'),
+                name: '尿不湿',
+                select: '尿不湿'
               },
               {
-                title: '男装',
-                url: require('../assets/img/icon_4.png'),
-                name: '精品男装',
-                select: '男装'
+                title: '童车童床',
+                url: require('../assets/img/ertongcar.png'),
+                name: '童车童床',
+                select: '童车童床'
               },
               {
-                title: '母婴',
-                url: require('../assets/img/icon_8.png'),
-                name: '母婴',
-                select: '母婴'
-              },
-              {
-                title: '鞋包配饰',
-                url: require('../assets/img/icon_6.png'),
-                name: '鞋包配饰',
-                select: '女鞋'
-              },
-              {
-                title: '内衣',
-                url: require('../assets/img/icon_7.png'),
-                name: '内衣',
-                select: '女士内衣'
+                title: '童鞋',
+                url: require('../assets/img/tongxie.png'),
+                name: '童鞋',
+                select: '童鞋'
               },
               {
                 title: '童装',
-                url: require('../assets/img/icon_3.png'),
+                url: require('../assets/img/tonghzuang.png'),
                 name: '童装',
                 select: '童装'
+              },
+              {
+                title: '喂养',
+                url: require('../assets/img/naiping.png'),
+                name: '喂养',
+                select: '喂养'
+              },
+              {
+                title: '洗护',
+                url: require('../assets/img/xihu.png'),
+                name: '洗护',
+                select: '洗护'
+              },
+              {
+                title: '婴童寝居',
+                url: require('../assets/img/yingerbaobei.png'),
+                name: '婴童寝居',
+                select: '婴童寝居'
               },
             ],
           },
@@ -221,46 +221,52 @@
             id:'美妆洗护',
             toolbarList: [
               {
-                title: '女装',
-                url: require('../assets/img/icon_1.png'),
-                name: '女装尖货',
-                select: '女装'
+                title: '彩妆',
+                url: require('../assets/img/caizhuang.png'),
+                name: '彩妆',
+                select: '彩妆'
               },
               {
-                title: '美妆洗护',
-                url: require('../assets/img/icon_2.png'),
-                name: '美妆洗护',
-                select: '美妆'
+                title: '个护',
+                url: require('../assets/img/gehu.png'),
+                name: '个护',
+                select: '个护'
               },
               {
-                title: '男装',
-                url: require('../assets/img/icon_4.png'),
-                name: '精品男装',
-                select: '男装'
+                title: '口红',
+                url: require('../assets/img/kouhong.png'),
+                name: '口红',
+                select: '口红'
               },
               {
-                title: '母婴',
-                url: require('../assets/img/icon_8.png'),
-                name: '母婴',
-                select: '母婴'
+                title: '美妆工具',
+                url: require('../assets/img/meizhuanggongju.png'),
+                name: '美妆工具',
+                select: '美妆工具'
               },
               {
-                title: '鞋包配饰',
-                url: require('../assets/img/icon_6.png'),
-                name: '鞋包配饰',
-                select: '女鞋'
+                title: '面部护肤',
+                url: require('../assets/img/mianbuhufu.png'),
+                name: '面部护肤',
+                select: '面部护肤'
               },
               {
-                title: '内衣',
-                url: require('../assets/img/icon_7.png'),
-                name: '内衣',
-                select: '女士内衣'
+                title: '面膜',
+                url: require('../assets/img/mianmo.png'),
+                name: '面膜',
+                select: '面膜'
               },
               {
-                title: '童装',
-                url: require('../assets/img/icon_3.png'),
-                name: '童装',
-                select: '童装'
+                title: '男士护肤',
+                url: require('../assets/img/nshufu.png'),
+                name: '男士护肤',
+                select: '男士护肤'
+              },
+              {
+                title: '清洁',
+                url: require('../assets/img/qingjie.png'),
+                name: '清洁',
+                select: '清洁'
               },
             ],
           },
@@ -268,46 +274,28 @@
             id:'内衣配饰',
             toolbarList: [
               {
-                title: '女装',
-                url: require('../assets/img/icon_1.png'),
-                name: '女装尖货',
-                select: '女装'
+                title: '保暖内衣',
+                url: require('../assets/img/baonuanneiyi.png'),
+                name: '保暖内衣',
+                select: '保暖内衣'
               },
               {
-                title: '美妆洗护',
-                url: require('../assets/img/icon_2.png'),
-                name: '美妆洗护',
-                select: '美妆'
+                title: '大牌文胸',
+                url: require('../assets/img/dapaiwenxiong.png'),
+                name: '大牌文胸',
+                select: '大牌文胸'
               },
               {
-                title: '男装',
-                url: require('../assets/img/icon_4.png'),
-                name: '精品男装',
-                select: '男装'
+                title: '袜子',
+                url: require('../assets/img/wazi.png'),
+                name: '袜子',
+                select: '袜子'
               },
               {
-                title: '母婴',
-                url: require('../assets/img/icon_8.png'),
-                name: '母婴',
-                select: '母婴'
-              },
-              {
-                title: '鞋包配饰',
-                url: require('../assets/img/icon_6.png'),
-                name: '鞋包配饰',
-                select: '女鞋'
-              },
-              {
-                title: '内衣',
-                url: require('../assets/img/icon_7.png'),
-                name: '内衣',
-                select: '女士内衣'
-              },
-              {
-                title: '童装',
-                url: require('../assets/img/icon_3.png'),
-                name: '童装',
-                select: '童装'
+                title: '眼镜配件',
+                url: require('../assets/img/yanjingpeisihj.png'),
+                name: '眼镜配件',
+                select: '眼镜配件'
               },
             ],
           },
@@ -315,140 +303,92 @@
             id:'运动户外',
             toolbarList: [
               {
-                title: '女装',
-                url: require('../assets/img/icon_1.png'),
-                name: '女装尖货',
-                select: '女装'
+                title: '户外服饰',
+                url: require('../assets/img/fuwai.png'),
+                name: '户外服饰',
+                select: '户外服饰'
               },
               {
-                title: '美妆洗护',
-                url: require('../assets/img/icon_2.png'),
-                name: '美妆洗护',
-                select: '美妆'
+                title: '休闲鞋',
+                url: require('../assets/img/xiuxianqie.png'),
+                name: '休闲鞋',
+                select: '休闲鞋'
               },
               {
-                title: '男装',
-                url: require('../assets/img/icon_4.png'),
-                name: '精品男装',
-                select: '男装'
+                title: '运动服饰',
+                url: require('../assets/img/ydfushi.png'),
+                name: '运动服饰',
+                select: '运动服饰'
               },
               {
-                title: '母婴',
-                url: require('../assets/img/icon_8.png'),
-                name: '母婴',
-                select: '母婴'
-              },
-              {
-                title: '鞋包配饰',
-                url: require('../assets/img/icon_6.png'),
-                name: '鞋包配饰',
-                select: '女鞋'
-              },
-              {
-                title: '内衣',
-                url: require('../assets/img/icon_7.png'),
-                name: '内衣',
-                select: '女士内衣'
-              },
-              {
-                title: '童装',
-                url: require('../assets/img/icon_3.png'),
-                name: '童装',
-                select: '童装'
+                title: '运动鞋包',
+                url: require('../assets/img/yundongxiebao.png'),
+                name: '运动鞋包',
+                select: '运动鞋包'
               },
             ],
           },
-          {
-            id:'数码家电',
-            toolbarList: [
-              {
-                title: '女装',
-                url: require('../assets/img/icon_1.png'),
-                name: '女装尖货',
-                select: '女装'
-              },
-              {
-                title: '美妆洗护',
-                url: require('../assets/img/icon_2.png'),
-                name: '美妆洗护',
-                select: '美妆'
-              },
-              {
-                title: '男装',
-                url: require('../assets/img/icon_4.png'),
-                name: '精品男装',
-                select: '男装'
-              },
-              {
-                title: '母婴',
-                url: require('../assets/img/icon_8.png'),
-                name: '母婴',
-                select: '母婴'
-              },
-              {
-                title: '鞋包配饰',
-                url: require('../assets/img/icon_6.png'),
-                name: '鞋包配饰',
-                select: '女鞋'
-              },
-              {
-                title: '内衣',
-                url: require('../assets/img/icon_7.png'),
-                name: '内衣',
-                select: '女士内衣'
-              },
-              {
-                title: '童装',
-                url: require('../assets/img/icon_3.png'),
-                name: '童装',
-                select: '童装'
-              },
-            ],
-          },
+          // {
+          //   id:'数码家电',
+          //   toolbarList: [
+          //     {
+          //       title: '女装',
+          //       url: require('../assets/img/icon_1.png'),
+          //       name: '女装尖货',
+          //       select: '女装'
+          //     },
+          //     {
+          //       title: '美妆洗护',
+          //       url: require('../assets/img/icon_2.png'),
+          //       name: '美妆洗护',
+          //       select: '美妆'
+          //     },
+          //     {
+          //       title: '男装',
+          //       url: require('../assets/img/icon_4.png'),
+          //       name: '精品男装',
+          //       select: '男装'
+          //     },
+          //     {
+          //       title: '母婴',
+          //       url: require('../assets/img/icon_8.png'),
+          //       name: '母婴',
+          //       select: '母婴'
+          //     },
+          //     {
+          //       title: '鞋包配饰',
+          //       url: require('../assets/img/icon_6.png'),
+          //       name: '鞋包配饰',
+          //       select: '女鞋'
+          //     },
+          //     {
+          //       title: '内衣',
+          //       url: require('../assets/img/icon_7.png'),
+          //       name: '内衣',
+          //       select: '女士内衣'
+          //     },
+          //     {
+          //       title: '童装',
+          //       url: require('../assets/img/icon_3.png'),
+          //       name: '童装',
+          //       select: '童装'
+          //     },
+          //   ],
+          // },
           {
             id:'食品百货',
             toolbarList: [
               {
-                title: '女装',
-                url: require('../assets/img/icon_1.png'),
-                name: '女装尖货',
-                select: '女装'
+                title: '宠物生活',
+                url: require('../assets/img/gouliang.png'),
+                name: '宠物生活',
+                select: '宠物生活'
               },
               {
-                title: '美妆洗护',
-                url: require('../assets/img/icon_2.png'),
-                name: '美妆洗护',
-                select: '美妆'
-              },
-              {
-                title: '男装',
-                url: require('../assets/img/icon_4.png'),
-                name: '精品男装',
-                select: '男装'
-              },
-              {
-                title: '母婴',
-                url: require('../assets/img/icon_8.png'),
-                name: '母婴',
-                select: '母婴'
-              },
-              {
-                title: '鞋包配饰',
-                url: require('../assets/img/icon_6.png'),
-                name: '鞋包配饰',
-                select: '女鞋'
-              },
-              {
-                title: '内衣',
-                url: require('../assets/img/icon_7.png'),
-                name: '内衣',
-                select: '女士内衣'
-              },
-              {
-                title: '童装',
-                url: require('../assets/img/icon_3.png'),
-                name: '童装',
-                select: '童装'
+                title: '休闲零食',
+                url: require('../assets/img/lingshi.png'),
+                name: '休闲零食',
+                select: '休闲零食'
               },
             ],
           },
@@ -471,6 +411,10 @@
   }
 </script>
 <style>
+.recommendation{
+  overflow-x: auto;
+  overflow-y: auto;
+}
 .recommendation .wra{
   padding-top: 50px;
 }
@@ -491,8 +435,8 @@
   font-size: 14px;
   color: #000;
 }
-.recommendation .wra .weui-loadmore{
+/* .recommendation .wra .weui-loadmore{
   margin: 1.5em auto 0 auto;
-}
+} */
 </style>
 

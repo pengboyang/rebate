@@ -235,6 +235,10 @@
   }
 </script>
 <style>
+.detail{
+  overflow-x: auto;
+  overflow-y: auto;
+}
 .detail .topBar{
   position: fixed;
   width: 100%;

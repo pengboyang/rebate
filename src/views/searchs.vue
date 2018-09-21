@@ -111,7 +111,7 @@
       }
     },
     mounted(){
-        this.wrapperHeight = document.documentElement.clientHeight - 60;
+        this.wrapperHeight = document.documentElement.clientHeight - 60 -53;
     },
     methods:{
         goback(){
@@ -131,10 +131,11 @@
         },
         //点击搜索
         iptShearch(){
-            this.listdata=[];
             if(this.search!=''){ //搜索框不为空  
+              this.listdata=[];
               saveSearch(this.search); // 本地存储搜索的内容 
               this.$store.state.name=this.search;
+              this.page.offset=0;this.page.limit=20;
               this.search='';  
               this.searchFlag = false;
               $('.searchCon').scrollTop(0);
@@ -235,7 +236,7 @@
   zoom: 1; 
 }
 .ser .top{
-    position: relative;
+    position: fixed;
     width: 100%;
     height: 50px;
     left: 0;
@@ -404,10 +405,8 @@
   margin-top: -34px;
 }
 .ser .searchCon{
-  margin: 0 15px;
-  overflow-x: auto;
-  overflow-y: auto;
-  padding-top: 10px;
+  padding: 0 15px;
+  padding-top: 60px;
 }
 .ser .searchCon .listCon{
   width: 48%;
@@ -494,12 +493,8 @@
 }
 .ser .page-infinite-wrapper{
   position: static;
-  overflow-y: visible;
-  overflow-x: visible;
-}
-.ser.wrapper{
-  overflow-x: visible;
-  overflow-y: visible;
+  overflow-x: auto;
+  overflow-y: auto;
 }
 .ser .loading-tips {
   text-align: center;

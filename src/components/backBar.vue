@@ -2,7 +2,7 @@
   <div class="comTop">
     <div class="serch">
       <div class="topBanner">
-        <div style="width:50px;height:100%;" @click="routeBack">
+        <div style="width:50px;height:100%;" @click="routeBack" v-if="title!='更多分类'">
           <img class="returnBack" src="../assets/img/returnwhite.png" alt="">
         </div>
         <div class="topTitle">{{title}}</div>
