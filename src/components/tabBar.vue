@@ -22,8 +22,8 @@
             icon:'icon-foo'
           },
           {
-            url:'/collect',
-            name:'收藏',
+            url:'/recommendation',
+            name:'分类',
             icon:'icon-bar'
           },
           {
@@ -41,7 +41,7 @@
     },
     methods: {
       goUrl(url,index) {
-        if(url!='/collect'&&url!='/mine'){
+        if(url!='/mine'){
           this.$router.push({path:url});
           this.$store.state.activeIndex = index;
         }else{
@@ -116,7 +116,7 @@
 
   /*视频*/
   .icon-bar {
-    background: url('../assets/img/shoucang.png');
+    background: url('../assets/img/fenlei.png');
     background-size: 100% 100%;
   }
 
