@@ -111,7 +111,7 @@
       }
     },
     mounted(){
-        this.wrapperHeight = document.documentElement.clientHeight - 60 -53;
+        this.wrapperHeight = document.documentElement.clientHeight - 60;
     },
     methods:{
         goback(){
@@ -238,6 +238,10 @@
 .clearfix {
   /* 触发 hasLayout */ 
   zoom: 1; 
+}
+.ser{
+  overflow-x: auto;
+  overflow-y: auto;
 }
 .ser .top{
     position: fixed;
@@ -497,8 +501,8 @@
 }
 .ser .page-infinite-wrapper{
   position: static;
-  overflow-x: auto;
-  overflow-y: auto;
+  overflow-x: visible;
+  overflow-y: visible;
 }
 .ser .loading-tips {
   text-align: center;
