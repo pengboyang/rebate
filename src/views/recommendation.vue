@@ -417,6 +417,7 @@
 }
 .recommendation .wra{
   padding-top: 50px;
+  padding-bottom:53px;
 }
 .recommendation .wra .weui-grid {
   width: 25% !important;

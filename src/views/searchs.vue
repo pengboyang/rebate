@@ -111,7 +111,7 @@
       }
     },
     mounted(){
-        this.wrapperHeight = document.documentElement.clientHeight - 60 -53;
+        this.wrapperHeight = document.documentElement.clientHeight - 60;
     },
     methods:{
         goback(){
