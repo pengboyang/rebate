@@ -66,7 +66,6 @@
               item.coupon_all_time = stime+'-'+etime;
               item.reserve_price = item.zk_final_price;
               item.zk_final_price = item.zk_final_price >= parseInt(price[0]) ? (item.zk_final_price - parseInt(price[1])).toFixed(2) : item.zk_final_price;
-              item.pictUrl = item.pictUrl +'_200x200.jpg';
               item.title = item.title.slice(0,18)+'...';
               item.couponPrice = parseInt(price[1]);
               item.pictUrl = item.pictUrl+'_200x200.jpg';
