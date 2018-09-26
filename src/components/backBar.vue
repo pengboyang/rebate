@@ -3,7 +3,7 @@
     <div class="serch">
       <div class="topBanner">
         <div style="width:50px;height:100%;" @click="routeBack" v-if="title!='更多分类'">
-          <img class="returnBack" src="../assets/img/returnwhite.png" alt="">
+          <img class="returnBack" src="../assets/img/loginzback.png" alt="">
         </div>
         <div class="topTitle">{{title}}</div>
       </div>
@@ -95,8 +95,8 @@
   .topBanner .returnBack {
     width: 12px;
     height: auto;
-    vertical-align: middle;
-    display: inline-block;
+    vertical-align: top;
+    padding-top: 14px;
   }
 
   .topBanner .topTitle {

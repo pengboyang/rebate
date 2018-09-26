@@ -10,8 +10,8 @@
       />
     </div>
     <div class="msg">
-      <img src="../assets/img/msg.png"/>
-      <span class="msgtxt">消息</span>
+      <!-- <img src="../assets/img/msg.png"/> -->
+      <span class="msgtxt">搜索</span>
     </div>
   </div>
 </template>
@@ -74,12 +74,14 @@
   }
 
   .msgtxt {
-    display: block;
+    /* display: block;
     font-size: 12px;
     transform: scale(0.8);
     -webkit-transform: scale(0.8);
     color: #fff;
     line-height: 0;
-    margin-right: -5px;
+    margin-right: -5px; */
+    font-size: 16px;
+    color: #fff;
   }
 </style>

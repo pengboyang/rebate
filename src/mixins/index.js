@@ -99,12 +99,14 @@ var mixin = {
         url: this.apiUrl.userAuth,
       }).then(res => {
         if (res.status == 200) {
+          console.log(res);
           let url = res.data.url;
           url = url + '&view=wap';
           // this.goTaobao(url);
           location.href=url;
         }
-      }).catch()
+      }).catch(
+      )
     },
     //获取服务器时间戳
     serviceTime(){

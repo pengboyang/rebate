@@ -1,6 +1,7 @@
 <template>
   <div class="collect">
     <div class="collectTopbar">
+      <div class="backBtn" @click="back"><img src="../assets/img/loginzback.png" alt=""></div>
       <div class="center">我的收藏</div>
       <div v-if="!choosePic" class="right" @click="manageGoods">管理</div>
       <div v-if="choosePic" class="right" @click="cancelGoods">完成</div>
@@ -37,7 +38,7 @@
         </p>
       </div>
     </div>
-    <tab-bar v-if="!choosePic"></tab-bar>
+    <!-- <tab-bar v-if="!choosePic"></tab-bar> -->
     <div v-if="choosePic" class="collectBottom">
         <div @click="checkedAll">全选</div>
         <div @click="deleteGood">删除{{numbers}}</div>
@@ -80,6 +81,10 @@
         this.wrapperHeight = document.documentElement.clientHeight - this.$refs.wrapper.getBoundingClientRect().top;
     },
     methods:{
+      back(){
+        // console.log(1)
+        this.$router.go(-1);
+      },
       manageGoods(){
         this.choosePic = true;
         this.textFont='12px';
@@ -210,6 +215,21 @@
   left: 0;
   top: 0;
   z-index: 999;
+}
+.collect .collectTopbar .backBtn{
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 50px;
+  height: 100%;
+  text-align: center;
+  z-index: 1;
+}
+.collect .collectTopbar .backBtn img{
+  padding-top: 14px;
+  width: 12px;
+  height: auto;
+  vertical-align: middle;
 }
 .collect .collectTopbar .center{
   width: 100%;
@@ -342,7 +362,7 @@
     position: absolute;
     overflow-y: auto;
     overflow-x: hidden;
-    padding: 70px 20px  53px 20px;
+    padding: 70px 20px  0 20px;
 }
  .content .loading-tips {
     text-align: center;
