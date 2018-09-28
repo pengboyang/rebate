@@ -186,6 +186,7 @@
         let isLogin = this.isLogin();
         if (isLogin) {
           this.creatSiagn(this.apiUrl.favorAddFavor);
+          console.log(this.saign)
           this.$http({
             method:'post',
             url:this.apiUrl.favorAddFavor,

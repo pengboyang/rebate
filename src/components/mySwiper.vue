@@ -27,10 +27,10 @@
             select: '大闸蟹'
           },
           {
-            title: '电器专卖',
+            title: '手机配件',
             url: require('../assets/img/swiper2.jpg'),
-            name: '电器专卖',
-            select: '电器专卖'
+            name: '手机配件',
+            select: '手机配件'
           },
         ]
       }
