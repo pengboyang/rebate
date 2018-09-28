@@ -13,7 +13,9 @@ var mixin = {
         favorDelFavor:'/tbk/api/favor/delFavor',
         userTime:'/tbk/api/user/time',
         userGetcode:'/tbk/api/user/getcode',
-        userLogin:'/tbk/api/user/login'
+        userLogin:'/tbk/api/user/login',
+        userQuit:'/tbk/api/user/quit',
+        bindTaobao:'/tbk/api/user/bindTaobao'
       }
     };
   },

@@ -174,15 +174,38 @@
           this.$router.push({path: '/more', query: {id: select, name: name}});
       },
       /*登录*/
+      // login(obj) {
+      //   this.$http({
+      //     method: 'get',
+      //     url: this.apiUrl.userToken,
+      //     params: {code: obj.code}
+      //   }).then(res => {
+      //     if (res.status == 200) {
+      //       console.log(res);
+      //       if (res.data.status == 1) {
+      //         var data = res.data;
+      //         localStorage.setItem('userInfoTb', JSON.stringify(data));
+      //         this.$toast.success('淘宝授权成功');
+      //       }
+      //     }
+      //   }).catch()
+      // },
+      // /*绑定*/
       login(obj) {
+        this.creatSiagn(this.apiUrl.bindTaobao);
         this.$http({
-          method: 'get',
-          url: this.apiUrl.userToken,
-          params: {code: obj.code}
+          method: 'post',
+          url: this.apiUrl.bindTaobao,
+          params: {code: obj.code},
+          headers: {
+              'uuid': this.uuid,
+              'times': this.times,
+              'sign': this.saign,
+          },
         }).then(res => {
           if (res.status == 200) {
+            console.log(res);
             if (res.data.status == 1) {
-              console.log(res);
               var data = res.data;
               localStorage.setItem('userInfoTb', JSON.stringify(data));
               this.$toast.success('淘宝授权成功');

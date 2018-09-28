@@ -6,16 +6,15 @@ import 'babel-polyfill';
 import Mixin from './mixins';
 import store from './store';
 import axios from 'axios';
-import 'swiper/dist/css/swiper.css'
-import VueAwesomeSwiper from 'vue-awesome-swiper'
-import WeVue from 'we-vue'
+import WeVue from 'we-vue';
 import 'we-vue/lib/style.css'
 import '@/js/plus.js';
 import $ from 'jquery';
 import VueLazyLoad from 'vue-lazyload'
-
+import 'swiper/dist/css/swiper.css'
+import VueAwesomeSwiper from 'vue-awesome-swiper'
+Vue.use(VueAwesomeSwiper, /* { default global options } */)
 Vue.use(WeVue)
-Vue.use(VueAwesomeSwiper)
 Vue.use(VueRouter);
 Vue.mixin(Mixin);
 Vue.use(VueLazyLoad,{
