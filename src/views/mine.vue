@@ -17,7 +17,7 @@
           <div class="flexWid">我的收藏</div>
           <div class="chakan">查看></div>
         </div>
-        <div class="wra">
+        <div class="wra" @click="goSetUp">
           <img src="../assets/img/shezhi.png" alt="">
           <div class="flexWid">设置</div>
           <div class="chakan">查看></div>
@@ -94,6 +94,9 @@
         }
       },
       methods:{
+        goSetUp(){
+          this.$router.push({path:'/setup'});
+        },
         goCoolect(){
           this.$router.push({path:'collect'});
         },
@@ -230,7 +233,7 @@
   border-bottom: 1px solid #e0e0e0;
 }
 .mine .minewra .mine-bottom .wra:last-child{
-  border: none;
+  /* border: none; */
 }
 .mine .minewra .mine-bottom .wra img{
   width: 16px;

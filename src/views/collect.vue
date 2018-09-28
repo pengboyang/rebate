@@ -179,6 +179,7 @@
           return false;
         }
         this.creatSiagn(this.apiUrl.favorList);
+        console.log(this.saign)
         this.$http({
           method:'get',
           url:this.apiUrl.favorList,

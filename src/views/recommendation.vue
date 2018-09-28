@@ -27,10 +27,10 @@
             id:'热门分类',
             toolbarList: [
               {
-                title: '女士内衣',
+                title: '大牌文胸',
                 url: require('../assets/img/dapaiwenxiong.png'),
-                name: '女士内衣',
-                select: '女士内衣'
+                name: '大牌文胸',
+                select: '大牌文胸'
               },
               {
                 title: '潮牌男装',
@@ -55,12 +55,6 @@
                 url: require('../assets/img/mianbuhufu.png'),
                 name: '面部护肤',
                 select: '面部护肤'
-              },
-              {
-                title: '面膜',
-                url: require('../assets/img/mianmo.png'),
-                name: '面膜',
-                select: '面膜'
               },
             ],
           },
@@ -92,10 +86,10 @@
                 select: '女款卫衣'
               },
               {
-                title: '女款女裤',
+                title: '女裤',
                 url: require('../assets/img/nvku.png'),
-                name: '女款女裤',
-                select: '女款女裤'
+                name: '女裤',
+                select: '女裤'
               },
               {
                 title: '大牌女装',
@@ -162,6 +156,12 @@
                 name: '中老年',
                 select: '中老年'
               },
+              {
+                title: '衬衫',
+                url: require('../assets/img/chenshan.png'),
+                name: '衬衫',
+                select: '衬衫'
+              },
             ],
           },
           {
@@ -174,10 +174,10 @@
                 select: '妈妈专区'
               },
               {
-                title: '尿不湿',
+                title: '纸尿裤',
                 url: require('../assets/img/niaobusi.png'),
-                name: '尿不湿',
-                select: '尿不湿'
+                name: '纸尿裤',
+                select: '纸尿裤'
               },
               {
                 title: '童车童床',
@@ -227,16 +227,10 @@
                 select: '彩妆'
               },
               {
-                title: '个护',
+                title: '个护馆',
                 url: require('../assets/img/gehu.png'),
-                name: '个护',
-                select: '个护'
-              },
-              {
-                title: '口红',
-                url: require('../assets/img/kouhong.png'),
-                name: '口红',
-                select: '口红'
+                name: '个护馆',
+                select: '个护馆'
               },
               {
                 title: '美妆工具',
@@ -251,22 +245,28 @@
                 select: '面部护肤'
               },
               {
-                title: '面膜',
-                url: require('../assets/img/mianmo.png'),
-                name: '面膜',
-                select: '面膜'
-              },
-              {
                 title: '男士护肤',
                 url: require('../assets/img/nshufu.png'),
                 name: '男士护肤',
                 select: '男士护肤'
               },
               {
-                title: '清洁',
+                title: '清洁馆',
                 url: require('../assets/img/qingjie.png'),
-                name: '清洁',
-                select: '清洁'
+                name: '清洁馆',
+                select: '清洁馆'
+              },
+              {
+                title: '口腔护理',
+                url: require('../assets/img/kouqianghuli.png'),
+                name: '口腔护理',
+                select: '口腔护理'
+              },
+              {
+                title: '洗发洁肤',
+                url: require('../assets/img/xifaxihu.png'),
+                name: '洗发洁肤',
+                select: '洗发洁肤'
               },
             ],
           },
@@ -297,6 +297,30 @@
                 name: '眼镜配件',
                 select: '眼镜配件'
               },
+              {
+                title: '男士内裤',
+                url: require('../assets/img/nansineiku.png'),
+                name: '男士内裤',
+                select: '男士内裤'
+              },
+              {
+                title: '女士内裤',
+                url: require('../assets/img/nvsineiku.png'),
+                name: '女士内裤',
+                select: '女士内裤'
+              },
+              {
+                title: '睡衣家居服',
+                url: require('../assets/img/shuiyi.png'),
+                name: '睡衣家居服',
+                select: '睡衣家居服'
+              },
+              {
+                title: '围巾帽子',
+                url: require('../assets/img/weijinmaozi.png'),
+                name: '围巾帽子',
+                select: '围巾帽子'
+              },
             ],
           },
           {
@@ -309,10 +333,10 @@
                 select: '户外服饰'
               },
               {
-                title: '休闲鞋',
+                title: '户外鞋包',
                 url: require('../assets/img/xiuxianqie.png'),
-                name: '休闲鞋',
-                select: '休闲鞋'
+                name: '户外鞋包',
+                select: '户外鞋包'
               },
               {
                 title: '运动服饰',
@@ -326,55 +350,85 @@
                 name: '运动鞋包',
                 select: '运动鞋包'
               },
+              {
+                title: '户外装备',
+                url: require('../assets/img/huwaizhuangbai.png'),
+                name: '户外装备',
+                select: '户外装备'
+              },
+              {
+                title: '骑行设备',
+                url: require('../assets/img/qixingshebei.png'),
+                name: '骑行设备',
+                select: '骑行设备'
+              },
+              {
+                title: '体育用品',
+                url: require('../assets/img/tiyuyongpin.png'),
+                name: '体育用品',
+                select: '体育用品'
+              },
+              {
+                title: '游泳用品',
+                url: require('../assets/img/youyongyongpin.png'),
+                name: '游泳用品',
+                select: '游泳用品'
+              },
             ],
           },
-          // {
-          //   id:'数码家电',
-          //   toolbarList: [
-          //     {
-          //       title: '女装',
-          //       url: require('../assets/img/icon_1.png'),
-          //       name: '女装尖货',
-          //       select: '女装'
-          //     },
-          //     {
-          //       title: '美妆洗护',
-          //       url: require('../assets/img/icon_2.png'),
-          //       name: '美妆洗护',
-          //       select: '美妆'
-          //     },
-          //     {
-          //       title: '男装',
-          //       url: require('../assets/img/icon_4.png'),
-          //       name: '精品男装',
-          //       select: '男装'
-          //     },
-          //     {
-          //       title: '母婴',
-          //       url: require('../assets/img/icon_8.png'),
-          //       name: '母婴',
-          //       select: '母婴'
-          //     },
-          //     {
-          //       title: '鞋包配饰',
-          //       url: require('../assets/img/icon_6.png'),
-          //       name: '鞋包配饰',
-          //       select: '女鞋'
-          //     },
-          //     {
-          //       title: '内衣',
-          //       url: require('../assets/img/icon_7.png'),
-          //       name: '内衣',
-          //       select: '女士内衣'
-          //     },
-          //     {
-          //       title: '童装',
-          //       url: require('../assets/img/icon_3.png'),
-          //       name: '童装',
-          //       select: '童装'
-          //     },
-          //   ],
-          // },
+          {
+            id:'数码家电',
+            toolbarList: [
+              {
+                title: '办公设备',
+                url: require('../assets/img/bangongshebei.png'),
+                name: '办公设备',
+                select: '办公设备'
+              },
+              {
+                title: '电脑配件',
+                url: require('../assets/img/diannaopeijian.png'),
+                name: '电脑配件',
+                select: '电脑配件'
+              },
+              {
+                title: '电脑整机',
+                url: require('../assets/img/diannaozhengji.png'),
+                name: '电脑整机',
+                select: '电脑整机'
+              },
+              {
+                title: '家用电器',
+                url: require('../assets/img/jiayongdianqi.png'),
+                name: '家用电器',
+                select: '家用电器'
+              },
+              {
+                title: '摄影摄像',
+                url: require('../assets/img/sheyingshexiang.png'),
+                name: '摄影摄像',
+                select: '摄影摄像'
+              },
+              {
+                title: '手机配件',
+                url: require('../assets/img/shoujipeijian.png'),
+                name: '手机配件',
+                select: '手机配件'
+              },
+              {
+                title: '手机通讯',
+                url: require('../assets/img/shoujitongxun.png'),
+                name: '手机通讯',
+                select: '手机通讯'
+              },
+              {
+                title: '网络产品',
+                url: require('../assets/img/wangluochanpin.png'),
+                name: '网络产品',
+                select: '网络产品'
+              },
+            ],
+          },
           {
             id:'食品百货',
             toolbarList: [
@@ -389,6 +443,18 @@
                 url: require('../assets/img/lingshi.png'),
                 name: '休闲零食',
                 select: '休闲零食'
+              },
+              {
+                title: '礼品鲜花',
+                url: require('../assets/img/lipinxianhua.png'),
+                name: '礼品鲜花',
+                select: '礼品鲜花'
+              },
+              {
+                title: '图书文学',
+                url: require('../assets/img/tushuwenxue.png'),
+                name: '图书文学',
+                select: '图书文学'
               },
             ],
           },
@@ -405,7 +471,7 @@
     },
     methods:{
       toolbar(name, select) {
-          this.$router.push({path: '/more', query: {id: select, name: name}});
+          this.$router.push({path: '/assortments', query: {id: select, name: name}});
       },
     }
   }
@@ -440,4 +506,3 @@
   margin: 1.5em auto 0 auto;
 } */
 </style>
-
