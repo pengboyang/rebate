@@ -3,7 +3,7 @@
     <back-bar :title="dataList.name"></back-bar>
     <good :listdata="dataList"></good>
     <!--<wv-loadmore type="line" text="省钱买"></wv-loadmore>-->
-    <tab-bar></tab-bar>
+    <!--<tab-bar></tab-bar>-->
   </div>
 </template>
 <script>

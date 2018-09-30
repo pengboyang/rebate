@@ -147,7 +147,7 @@
                     userInfo.nickName = nickName;
                     localStorage.setItem('userInfo', JSON.stringify(userInfo));
                     this.$toast.success('登录成功');
-                    this.$router.go(-1);
+                    this.$router.push({path:'/index'});
                 } else {
                     Toast.text({
                         message: res.data.message,

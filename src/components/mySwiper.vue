@@ -2,7 +2,7 @@
   <div class="comSwiepr">
     <wv-swipe :autoplay="3000">
       <!--<wv-swipe-item v-for="(item,index) in srcLists" :key="index"><img :src="item.cover" alt=""></wv-swipe-item>-->
-      <wv-swipe-item><img class="bannerImg" src="../assets/img/banner.png" alt=""></wv-swipe-item>
+      <wv-swipe-item v-for="(item,index) in loopLsit" :key="index"><img @click="toolbar(item.name,item.select)"  class="bannerImg" :src="item.url" alt=""></wv-swipe-item>
     </wv-swipe>
   </div>
 </template>
@@ -11,7 +11,28 @@
     name: 'mySwiper',
     data() {
       return {
-        srcLists: [],
+        srcLists: [
+        ],
+        loopLsit:[
+          {
+            title: '女士内衣',
+            url: require('../assets/img/swiper1.jpg'),
+            name: '女士内衣',
+            select: '女士内衣'
+          },
+          {
+            title: '大闸蟹',
+            url: require('../assets/img/swiper3.jpg'),
+            name: '大闸蟹',
+            select: '大闸蟹'
+          },
+          {
+            title: '手机配件',
+            url: require('../assets/img/swiper2.jpg'),
+            name: '手机配件',
+            select: '手机配件'
+          },
+        ]
       }
     },
     props: {
@@ -30,6 +51,12 @@
     },
     created() {
     },
+    methods:{
+      toolbar(name, select) {
+        console.log(1)
+          this.$router.push({path: '/more', query: {id: select, name: name}});
+      },
+    }
   }
 </script>
 <style>

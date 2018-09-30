@@ -84,5 +84,34 @@ export default [
     name: 'recommendation',
     component: resolve => require(['views/recommendation'], resolve),
   },
-
+  {
+    meta: {
+      title: '分类列表',
+      keepAlive: false,
+      isBack: false,
+    },
+    path: '/assortments',
+    name: 'assortments',
+    component: resolve => require(['views/assortments'], resolve),
+  },
+  {
+    meta: {
+      title: '设置',
+      keepAlive: false,
+      isBack: false,
+    },
+    path: '/setup',
+    name: 'setup',
+    component: resolve => require(['views/setup'], resolve),
+  },
+  {
+    meta: {
+      title: '关于我们',
+      keepAlive: false,
+      isBack: false,
+    },
+    path: '/aboutus',
+    name: 'aboutus',
+    component: resolve => require(['views/aboutus'], resolve),
+  },
 ];
