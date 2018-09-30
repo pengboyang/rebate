@@ -7,10 +7,10 @@
     </div>
     <div class="aboutCon">
       <div class="logoPic"><img src="../assets/img/quanlogo.png" alt=""></div>
-      <div class="nameversion">APP名称:省钱多</div>
+      <div class="nameversion">APP名称:省钱买</div>
       <div class="cusQQ">
         <div><span>工作时间:</span>周一至周五10:00-19:00</div>
-        <div><span>客服QQ:</span>3437733149</div>
+        <div><span>客服微信号:</span>koudaitoutiao</div>
       </div>
     </div>
   </div>
