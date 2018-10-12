@@ -11,7 +11,8 @@ export default new vuex.Store({
         activeIndex:0,
         deviceuuid:'864035034842337',//设备uuid
         devicemodel:'设备型号',
-        name:''
+        name:'',
+        popup:true,//弹窗
     },
     /*局部状态*/
     modules:{

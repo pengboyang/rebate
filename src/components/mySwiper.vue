@@ -32,6 +32,16 @@
             name: '手机配件',
             select: '手机配件'
           },
+          {
+            url: require('../assets/img/swiper4.jpg'),
+            name: 'link',
+            select: 'koudai'
+          },
+          {
+            url: require('../assets/img/swiper5.jpg'),
+            name: 'link',
+            select: 'wx'
+          },
         ]
       }
     },
@@ -53,8 +63,15 @@
     },
     methods:{
       toolbar(name, select) {
-        console.log(1)
+        if(name=='link'){
+          if(select=='wx'){
+            this.gowx();
+          }else if(select=='koudai'){
+            this.gokoudai();
+          }
+        }else{
           this.$router.push({path: '/more', query: {id: select, name: name}});
+        }
       },
     }
   }

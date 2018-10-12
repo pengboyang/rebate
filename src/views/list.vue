@@ -26,12 +26,14 @@
       <wv-spinner type="dot-circle" color="#444" :size="24"/>
     </p>
     <wv-loadmore type="line" text="省钱买"></wv-loadmore>
+    <pop-swiper v-if="$store.state.popup"></pop-swiper>
   </div>
 </template>
 <script>
   import 'swiper/dist/css/swiper.css'////这里注意具体看使用的版本是否需要引入样式，以及具体位置。
   import {Dialog} from 'we-vue'
   import mySwiper from '../components/mySwiper.vue'
+  import popSwiper from '../components/popSwiper.vue'
   import ten from '../components/ten'
   import twenty from '../components/twenty'
   import good from '../components/good'
@@ -125,6 +127,7 @@
       topBar,
       tabBar,
       mySwiper,
+      popSwiper,
       ten,
       twenty,
       good,

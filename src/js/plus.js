@@ -41,7 +41,7 @@ import {Dialog} from 'we-vue'
     //安卓返回键处理
     var first = null;
     plus.key.addEventListener("backbutton", function () {
-      var otherView = plus.webview.getWebviewById('taobao') || null;
+      var otherView = plus.webview.getWebviewById('taobao') || plus.webview.getWebviewById('wx')|| null;
       if (otherView) {
         otherView.canBack(function (e) {
           if (e.canBack) {
