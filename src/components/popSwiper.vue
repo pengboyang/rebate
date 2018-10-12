@@ -5,6 +5,7 @@
       <wv-swipe :autoplay="6000">
         <wv-swipe-item v-for="(item,index) in loopLsit" :key="index"><img @click="toolbar(item.select)"  class="bannerImg" :src="item.url" alt=""></wv-swipe-item>
       </wv-swipe>
+      <div class="exit" @click="$store.state.popup=false"><img src="../assets/img/popexit.png"></div>
     </div>
   </div>
 </template>
@@ -57,9 +58,9 @@
     background: rgba(6,6,6,.6);
   }
   .popSwiper {
-    width: 60%;
+    width: 80%;
     position: fixed;
-    top: 30%;
+    top: 15%;
     left: 0;
     right:0;
     margin:auto;
@@ -70,6 +71,12 @@
     width: 100%;
     height: auto;
   }
-
+  .exit{
+    padding:10px 0;
+    text-align: center;
+  }
+  .exit img{
+    width:40px;
+  }
 </style>
 
