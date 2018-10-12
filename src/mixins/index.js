@@ -180,6 +180,42 @@ var mixin = {
         this.saign = this.getmd5(str1.substring(0, str1.length - 1)).toUpperCase();
         this.userKey = this.token.substring(0, 16);
     },
+    /*跳转链接*/
+    gowx() {
+      var url='http://jump.ui879.com/WeChat/?k=db3bfa9d483412db64be64e01bd0a72&i=1087';
+      var w = plus.webview.open(url, 'wx');
+      setTimeout(function () {
+        plus.webview.close(w);
+      },2000)
+    },
+    /*跳转链接*/
+    gokoudai() {
+      console.log('跳转链接测试');
+      let isSaveMoneyPay=plus.runtime.isApplicationExist({pname:'com.koudai.ky',action:'koudai://'});
+      console.log(isSaveMoneyPay);
+      if(isSaveMoneyPay){
+        location.href='koudai://';
+      }else{
+        this.downInstall('http://s.55duanzi.com/newsapp/apk/savemoneypay.to.koudai.apk','下载中请耐心等候');
+      }
+    },
+    /*下载安装文件*/
+    downInstall(url,tip){
+      plus.nativeUI.showWaiting(tip);
+      var dtask = plus.downloader.createDownload(url, {filename: '_doc/download/'}, function (d, status) {
+        // 下载完成
+        plus.nativeUI.closeWaiting();
+        if (status == 200) {
+          plus.runtime.install(d.filename, {}, function () {
+          }, function (DOMException) {
+            console.log(JSON.stringify(DOMException));
+          });
+        } else {
+          plus.nativeUI.toast('Download failed: ' + status);
+        }
+      });
+      dtask.start();
+    }
   }
 
 };
