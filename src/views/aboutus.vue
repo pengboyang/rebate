@@ -74,7 +74,7 @@
   margin-bottom: 15px;
 }
 .about .aboutCon .logoPic img{
-  width: 50%;
+  width: 35%;
   height: auto;
   vertical-align: middle;
 }
