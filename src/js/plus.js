@@ -41,7 +41,7 @@ import {Dialog} from 'we-vue'
     //安卓返回键处理
     var first = null;
     plus.key.addEventListener("backbutton", function () {
-      var otherView = plus.webview.getWebviewById('taobao') || null;
+      var otherView = plus.webview.getWebviewById('taobao') || plus.webview.getWebviewById('wx')|| null;
       if (otherView) {
         otherView.canBack(function (e) {
           if (e.canBack) {
@@ -53,7 +53,7 @@ import {Dialog} from 'we-vue'
       } else {
         var fileHref = window.location.href;
         console.log(fileHref);
-        var reg = RegExp(/#\/(index)/g);
+        var reg = RegExp(/#\/(index|recommendation|mine)/g);
         if (reg.test(fileHref)) {
           //首次按键，提示‘再按一次退出应用’
           if (!first) {

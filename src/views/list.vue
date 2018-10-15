@@ -1,27 +1,39 @@
 <template>
-  <div class="manList">
-    <top-bar></top-bar>
-    <my-swiper :lists="sweiperList"></my-swiper>
-    <wv-grid>
-      <wv-grid-item v-for="(item,index) in toolbarList" :key="index" @click="toolbar(item.name,item.select)">
-        <img :src="item.url" slot="icon">
-        <span slot="label" class="icontxt">{{item.title}}</span>
-      </wv-grid-item>
-    </wv-grid>
-    <div>
-      <ten :listdata="listdata.girl"></ten>
-      <twenty :listdata="listdata.man"></twenty>
-      <hot></hot>
-      <index-good :listdata="listdata.good"></index-good>
-    </div>
-    <wv-loadmore type="line" text="这就是我的底线"></wv-loadmore>
-    <tab-bar></tab-bar>
+  <div class="manList page-infinite-wrapper" ref="wrapper"
+       :style="{width:'100%', height: wrapperHeight + 'px'}">
+    <wv-group
+      v-infinite-scroll="loadMore"
+      infinite-scroll-disabled="loading"
+      infinite-scroll-distance="50"
+    >
+      <top-bar></top-bar>
+      <my-swiper :lists="sweiperList"></my-swiper>
+      <wv-grid>
+        <wv-grid-item v-for="(item,index) in toolbarList" :key="index" @click="toolbar(item.name,item.select)">
+          <img :src="item.url" slot="icon">
+          <span slot="label" class="icontxt">{{item.title}}</span>
+        </wv-grid-item>
+      </wv-grid>
+      <div>
+        <ten :listdata="listdata.girl"></ten>
+        <twenty :listdata="listdata.man"></twenty>
+        <hot></hot>
+        <index-good :listdata="listdata.good"></index-good>
+      </div>
+      <tab-bar></tab-bar>
+    </wv-group>
+    <p v-show="loading" class="loading-tips">
+      <wv-spinner type="dot-circle" color="#444" :size="24"/>
+    </p>
+    <wv-loadmore type="line" text="省钱买"></wv-loadmore>
+    <pop-swiper v-if="$store.state.popup"></pop-swiper>
   </div>
 </template>
 <script>
   import 'swiper/dist/css/swiper.css'////这里注意具体看使用的版本是否需要引入样式，以及具体位置。
   import {Dialog} from 'we-vue'
   import mySwiper from '../components/mySwiper.vue'
+  import popSwiper from '../components/popSwiper.vue'
   import ten from '../components/ten'
   import twenty from '../components/twenty'
   import good from '../components/good'
@@ -35,6 +47,12 @@
     name: 'manList',
     data() {
       return {
+        loading: false,
+        wrapperHeight: 0,
+        page: {
+          offset: 0,
+          limit: 10
+        },
         listdata: {
           girl: {
             name: '女装尖货',
@@ -109,6 +127,7 @@
       topBar,
       tabBar,
       mySwiper,
+      popSwiper,
       ten,
       twenty,
       good,
@@ -122,7 +141,7 @@
       // }
       let query = this.getCode();
       let isLogin = this.tbLogin();
-      if (!isLogin&&query && query.code) {
+      if (!isLogin && query && query.code) {
         console.log(1)
         this.login(query);
       }
@@ -132,6 +151,11 @@
       this.serviceTime();
     },
     methods: {
+      loadMore() {
+        this.loading = true;
+        this.page.offset++;
+        this.getlist('good');
+      },
       manPageList() {
         this.$http({
           method: 'get',
@@ -151,21 +175,28 @@
           url: this.apiUrl.getlist,
           params: {
             name: this.listdata[key].select,
-            page_no: Math.floor(Math.random() * (10 - 1) + 1),
-            page_size: this.listdata[key].name == '特价好货' ? 4 : 3,
+            page_no: this.page.offset||Math.floor(Math.random() * (10 - 1) + 1),
+            page_size: this.listdata[key].name == '特价好货' ? this.page.limit : 3,
           }
         }).then(res => {
           if (res.status == 200) {
             res.data.list.forEach(item => {
               let price = item.coupon_info.replace(/满/g, '').replace(/减/g, '$').split('$');
-              let stime = item.coupon_start_time.replace(/-/g,'.');
-              let etime = item.coupon_end_time.replace(/-/g,'.');
-              item.coupon_all_time = stime+'-'+etime;
+              let stime = item.coupon_start_time.replace(/-/g, '.');
+              let etime = item.coupon_end_time.replace(/-/g, '.');
+              item.coupon_all_time = stime + '-' + etime;
               item.reserve_price = item.zk_final_price;
               item.zk_final_price = item.zk_final_price >= parseInt(price[0]) ? (item.zk_final_price - parseInt(price[1])).toFixed(2) : item.zk_final_price;
               item.couponPrice = parseInt(price[1]);
-            })
-            this.listdata[key].list = res.data.list;
+              item.pictUrl = item.pictUrl+'_200x200.jpg';
+            });
+            if(key=='good')
+              this.listdata[key].list = this.listdata[key].list.concat(res.data.list);
+            else
+              this.listdata[key].list = res.data.list;
+            this.$nextTick(() => {
+              this.loading = false;
+            });
 
           }
         }).catch()
@@ -215,6 +246,8 @@
       },
     },
     mounted() {
+      this.wrapperHeight = document.documentElement.clientHeight - this.$refs.wrapper.getBoundingClientRect().top - 53;
+      this.$refs.wrapper.addEventListener('scroll', this.handleScroll);
     }
   }
 </script>

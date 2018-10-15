@@ -56,11 +56,14 @@
     display: flex;
     align-items: center;
     padding: 0 15px;
+    background: #EA6E35;
   }
 
   .serch {
     width: 85%;
-    height: 30px;
+    height: 28px;
+    border-radius: 14px;
+    overflow: hidden;
   }
 
   .msg {

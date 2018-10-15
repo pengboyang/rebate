@@ -2,9 +2,9 @@
   <div class="recommendation">
     <backbar :title="title"></backbar>
     <div class="wra">
-      <wv-grid v-for="item in titleDataLists">
+      <wv-grid v-for="item in titleDataLists" :key="item.id">
         <wv-loadmore type="line" :text="item.id"></wv-loadmore>
-        <wv-grid-item v-for="(items,index) in item.toolbarList" @click="toolbar(items.name,items.select)">
+        <wv-grid-item v-for="(items,index) in item.toolbarList" :key="index" @click="toolbar(items.name,items.select)">
           <img :src="items.url" slot="icon">
           <span slot="label" class="icontxt">{{items.title}}</span>
         </wv-grid-item>
@@ -483,7 +483,7 @@
 }
 .recommendation .wra{
   padding-top: 50px;
-  padding-bottom: 50px;
+  padding-bottom:53px;
 }
 .recommendation .wra .weui-grid {
   width: 25% !important;

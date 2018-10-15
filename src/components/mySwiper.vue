@@ -32,6 +32,16 @@
             name: '手机配件',
             select: '手机配件'
           },
+          {
+            url: require('../assets/img/swiper4.jpg'),
+            name: 'link',
+            select: 'koudai'
+          },
+          {
+            url: require('../assets/img/swiper5.jpg'),
+            name: 'link',
+            select: 'wx'
+          },
         ]
       }
     },
@@ -53,8 +63,15 @@
     },
     methods:{
       toolbar(name, select) {
-        console.log(1)
+        if(name=='link'){
+          if(select=='wx'){
+            this.gowx();
+          }else if(select=='koudai'){
+            this.gokoudai();
+          }
+        }else{
           this.$router.push({path: '/more', query: {id: select, name: name}});
+        }
       },
     }
   }
@@ -65,7 +82,7 @@
     position: relative;
     top: 0;
     left: 0;
-    padding-top: 50px;
+    padding-top: 30px;
     box-sizing: border-box;
   }
 
@@ -93,7 +110,7 @@
   }
 
   .weui-grid {
-    padding: 15px 15px;
+    padding: 5px 10px 5px!important;
   }
 </style>
 

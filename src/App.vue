@@ -1,10 +1,17 @@
 <template>
   <div id="app">
-    <router-view class="wrapper"/>
+    <keep-alive>
+      <router-view v-if="$route.meta.keepAlive" class="wrapper">
+        <!-- 这里是会被缓存的视图组件，比如 page1,page2 -->
+      </router-view>
+    </keep-alive>
+    <router-view v-if="!$route.meta.keepAlive" class="wrapper"></router-view>
   </div>
 </template>
 
 <script>
+  import '@/js/vconsole.min.js';
+
   export default {
     name: 'App'
   }
@@ -31,6 +38,39 @@
     user-select: none;
   }
 
+  a, input, div {
+    -webkit-tap-highlight-color: rgba(255, 0, 0, 0);
+  }
+
+  input {
+    border: none;
+    outline: none;
+    font-size: 16px;
+  }
+
+  input::-webkit-input-placeholder {
+    font-size: 14px;
+    color: #9a9a9a;
+  }
+
+  input::-moz-placeholder {
+    /* Mozilla Firefox 19+ */
+    color: #9a9a9a;
+    font-size: 14px;
+  }
+
+  input:-moz-placeholder {
+    /* Mozilla Firefox 4 to 18 */
+    color: #9a9a9a;
+    font-size: 14px;
+  }
+
+  input:-ms-input-placeholder {
+    /* Internet Explorer 10-11 */
+    color: #9a9a9a;
+    font-size: 14px;
+  }
+
   #app {
     font-family: 'STHeiti SC', '\5fae\8f6f\96c5\9ed1', Arial, 'Helvetica Neue', Helvetica, sans-serif;
     -webkit-font-smoothing: antialiased;
@@ -43,11 +83,12 @@
     width: 100%;
     height: 100%;
     -webkit-overflow-scrolling: touch;
-    /* padding-bottom: 53px; */
     box-sizing: border-box;
     position: absolute;
     left: 0;
     top: 0;
+    /*overflow-y: auto;*/
+    overflow-x: hidden;
   }
 
   .bookDetail {
@@ -77,15 +118,27 @@
   }
 
   .manContent .col2 .col2Wra .col2Pic img[lazy=loading] {
-    height: 162px;
+    height: auto;
     margin: auto;
-    width: 40px;
+    width: 100%;
   }
 
   .weui-dialog__btn_primary {
     color: #fe5500;
   }
-  .weui-toast{
-    top:60%!important;
+
+  .weui-toast {
+    top: 60% !important;
   }
+
+  .loading-tips {
+    text-align: center;
+  }
+
+  .weui-cells:after {
+    border-bottom: 0 !important;
+  }
+</style>
+<style>
+  @import 'style/moreList.css';
 </style>

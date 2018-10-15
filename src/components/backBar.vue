@@ -55,6 +55,7 @@
     display: flex;
     align-items: center;
     padding: 0 15px;
+    background: #EA6E35;
   }
 
   .serch {

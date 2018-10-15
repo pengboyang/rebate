@@ -19,7 +19,7 @@ Vue.use(VueRouter);
 Vue.mixin(Mixin);
 Vue.use(VueLazyLoad,{
   // error:'./static/error.png',
-  // loading:require('./assets/logo.png')
+  loading:require('./assets/img/lazy.png')
 });
 Vue.config.productionTip = false;
 // Vue.config.debug = true;/*异常捕捉*/
@@ -44,9 +44,8 @@ const router = new VueRouter({
 
 // ajax
 Vue.$http = Vue.prototype.$http = axios.create({
-  // baseURL: 'http://api.55duanzi.com',
-  // baseURL: 'http://api.i6bktq.cn:83',
   baseURL: 'http://alimama.55duanzi.com',
+  // baseURL: 'http://api.i6bktq.cn:83',
   withCredentials: true,// `withCredentials` 表示跨域请求时是否需要使用凭证
   timeout: 5000
 });
