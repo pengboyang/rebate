@@ -480,6 +480,7 @@
 .recommendation{
   overflow-x: auto;
   overflow-y: auto;
+  background: #fff;
 }
 .recommendation .wra{
   padding-top: 50px;

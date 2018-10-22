@@ -1,21 +1,11 @@
 <template>
   <div class="comTop" @click="goSearch">
-    <div class="serch">
-      <wv-search-bar
-        :autofocus="false"
-        v-model="value"
-        @search="onSearch"
-        @cancel="onCancel"
-        :placeholder="placeholder"
-      />
-    </div>
-    <div class="msg">
-      <!-- <img src="../assets/img/msg.png"/> -->
-      <span class="msgtxt">搜索</span>
+    <div class="searchBox">
+      <img src="../assets/img/searchjingzi.png" alt="">
+      <span>搜索商品名称或则粘贴宝贝链接</span>
     </div>
   </div>
 </template>
-
 <script>
   export default {
     name: 'topBar',
@@ -24,6 +14,19 @@
         value: '',
         placeholder: '搜索商品名称或粘贴宝贝链接',
       }
+    },
+    watch: {
+      scrollNums: function (od, nw) {
+        this.scrollTopS = od;
+      }
+    },
+    props:{
+      scrollNums:{
+        type:Number,
+        required:true
+      }
+    },
+    created(){
     },
     computed: {},
     methods: {
@@ -36,6 +39,12 @@
       },
       goSearch(){
         this.$router.push({path:'/searchs'});
+      },
+      childFn(){
+        $('.comTop').css({ 
+          backgroundColor:((( this.scrollTopS / 150) >= 1) ? '#f2f2f2' : 'transparent'),
+          // opacity: ((( this.scrollTopS / 300) >= 1) ? 1 : (this.scrollTopS / 300))
+        })
       }
     }
   }
@@ -45,46 +54,37 @@
 <style scoped>
   .comTop {
     width: 100%;
-    height: 50px;
+    height: 65px;
     position: fixed;
     left: 0;
     top: 0;
-    background: url('../assets/img/topBg.jpg') repeat-y;
-    background-size: 100% 100%;
     z-index: 999;
     font-family: 'noto';
     display: flex;
     align-items: center;
-    padding: 0 15px;
-    background: #EA6E35;
   }
 
-  .serch {
-    width: 85%;
-    height: 28px;
-    border-radius: 14px;
-    overflow: hidden;
-  }
-
-  .msg {
-    width: 15%;
+  .comTop .searchBox{
+    width: 80%;
     height: 30px;
-    text-align: right;
+    background: #fff;
+    border-radius: 14px;
+    padding-left: 20px;
+    line-height: 27px;
+    margin: 0 auto;
   }
 
-  .msg img {
-    width: 40%;
+  .comTop .searchBox span{
+    font-size: 15px;
+    color: #c2c2c2;
+    vertical-align: middle;
   }
 
-  .msgtxt {
-    /* display: block;
-    font-size: 12px;
-    transform: scale(0.8);
-    -webkit-transform: scale(0.8);
-    color: #fff;
-    line-height: 0;
-    margin-right: -5px; */
-    font-size: 16px;
-    color: #fff;
+  .comTop .searchBox img{
+    width: 15px;
+    height: auto;
+    vertical-align: middle;
+    margin-right: 10px;
   }
+
 </style>

@@ -1,16 +1,16 @@
 <template>
   <div class="ser">
     <div class="top">
-        <div class="topbg"><img src="../assets/img/topBg.jpg" alt=""></div>
+        <!-- <div class="topbg"><img src="../assets/img/topBg.jpg" alt=""></div> -->
         <div class="top-box">
-            <div class="backBtn"><img @click="goback" src="../assets/img/loginzback.png"></img></div>
-            <div class="inp"><input v-focus v-model="search" type="text" placeholder="请输入您要查找的内容"></div>
-            <span @click="iptShearch" class="searchBtn">搜索</span>
+            <div class="backBtn"><img @click="goback" src="../assets/img/loginzback111.png"></img></div>
+            <div class="inp"><input v-focus v-model="search" type="text" placeholder="请输入商品名称或则粘贴商品链接"></div>
+            <div @click="iptShearch" class="searchBtn"><span>搜索</span></div>
         </div>
     </div>
     <div class="serRule" v-if="searchFlag">
       <div class="comSearch">
-        <p>大家都在搜</p>
+        <p style="color:#666">大家都在搜</p>
         <div class="searchTitle">
           <div class="sFlex" v-for="items in hotSearchList" @click="historysearch(items)">{{items}}</div>
         </div>
@@ -244,16 +244,17 @@
   overflow-y: auto;
 }
 .ser .top{
-    position: fixed;
-    width: 100%;
-    height: 50px;
-    left: 0;
-    top: 0;
-    z-index: 999;
+  position: fixed;
+  width: 100%;
+  height: 60px;
+  left: 0;
+  top: 0;
+  z-index: 999;
+  background: #f2f2f2;
 }
 .ser .topbg{
   width: 100%;
-  height: 50px;
+  height: 60px;
   position: absolute;
   left: 0;
   top: 0;
@@ -261,12 +262,12 @@
 }
 .ser .topbg img{
   width: 100%;
-  height: 50px;
+  height: 60px;
   vertical-align: middle;
 }
 .ser .top-box{
   width: 100%;
-  height: 50px;
+  height: 60px;
   display: -webkit-flex;
   text-align: center;
   align-items: center;
@@ -289,13 +290,17 @@
   margin: 0 auto;
 }
 .ser .top-box .searchBtn{
-  display: inline-block;
   width: 60px;
   height: 100%;
-  font-size: 16px;
-  line-height: 50px;
+  font-size: 15px;
+  line-height: 60px;
   text-align: center;
   color: #fff;
+}
+.ser .top-box .searchBtn span{
+  background: #fe5500;
+  padding: 2px 8px;
+  border-radius: 12px;
 }
 .ser .top-box .inp{
   height: 26px;
@@ -313,6 +318,7 @@
   vertical-align: top;
 }
 .ser .serRule{
+  padding-top: 50px;
 }
 .ser .serRule .comSearch{
   padding-left:20px;
@@ -331,7 +337,7 @@
 }
 .ser .serRule .comSearch .searchTitle .sFlex{
   padding: 2px 20px;
-  background: #e0e0e0;
+  background: #f2f2f2;
   border-radius: 14px;
   margin-bottom: 15px;
   margin-right: 15px;
@@ -348,6 +354,7 @@
 .ser .serRule .searchHistory .history-panel .hisTop .historys{
   flex: 1;
   font-weight: 700;
+  color: #666;
 }
 .ser .serRule .searchHistory .history-panel .hisTop .del{
   width: 35px;
@@ -359,18 +366,18 @@
 .ser .serRule .searchHistory .history-panel .his_ulcon{
   padding-left: 10px;
   font-size: 14px;
-  display: flex;
+  /* display: flex;
   display: -webkit-flex;
   flex-direction: row;
-  flex-wrap: wrap;
+  flex-wrap: wrap; */
 }
 .ser .serRule .searchHistory .history-panel .his_ulcon .his_li{
-  background: #e0e0e0;
+  /* background: #e0e0e0; */
   padding: 2px 20px;
   margin-right: 15px;
   margin-bottom: 15px;
-  border-radius: 14px;
-  color: #666;
+  /* border-radius: 14px; */
+  color: #999;
 }
 .ser .sortsRule{
   display: -webkit-flex;

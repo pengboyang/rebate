@@ -1,12 +1,17 @@
 <template>
   <div class="comSwiepr">
-    <wv-swipe :autoplay="3000">
-      <!--<wv-swipe-item v-for="(item,index) in srcLists" :key="index"><img :src="item.cover" alt=""></wv-swipe-item>-->
-      <wv-swipe-item v-for="(item,index) in loopLsit" :key="index"><img @click="toolbar(item.name,item.select)"  class="bannerImg" :src="item.url" alt=""></wv-swipe-item>
-    </wv-swipe>
+     <div class="bg_mh"></div>
+     <div class="swiper-container">
+        <div class="swiper-wrapper">
+          <div class="swiper-slide" v-for="(item,index) in loopLsit" :key="index"><img @click="toolbar(item.name,item.select)" :src="item.url" alt=""></div>
+        </div>
+        <div class="swiper-pagination"></div>
+     </div>
   </div>
 </template>
 <script>
+  import Swiper from 'swiper';
+  import 'swiper/dist/css/swiper.min.css';
   export default {
     name: 'mySwiper',
     data() {
@@ -59,6 +64,28 @@
         this.srcLists = od;
       }
     },
+    mounted(){
+        var _this = this;
+        var mySwipers = new Swiper('.swiper-container', {
+            autoplay: {
+              delay: 3000,//1秒切换一次
+              disableOnInteraction: false,
+            },
+            loop:true,
+            observer:true,
+            observeParents:true,
+            pagination: {
+              el: '.swiper-pagination',
+            },
+            on: {
+                slideChangeTransitionStart: function () {
+                },
+                slideChangeTransitionEnd: function () {
+                  $('.bg_mh').css("background-image","url(" + _this.loopLsit[this.realIndex].url+ ")")
+                },
+            },
+        })
+    },
     created() {
     },
     methods:{
@@ -82,34 +109,46 @@
     position: relative;
     top: 0;
     left: 0;
-    padding-top: 30px;
+    padding-top: 65px;
+    padding-bottom: 10px;
     box-sizing: border-box;
   }
 
-  .bannerImg {
+  .comSwiepr .bg_mh{
     width: 100%;
-    height: auto;
+    height: 100%;
+    position: absolute;
+    left: 0;
+    top: 0;
+    background-repeat:no-repeat;
+    background-size:cover;
+    -webkit-filter:blur(20px);
+    -moz-filter:blur(20px);
+    -o-filter:blur(20px);
+    -ms-filter:blur(20px);
+    filter:blur(20px);
   }
 
-  .swiper-container {
+  .comSwiepr .swiper-container {
     width: 100%;
   }
 
-  .swiper-container img {
+  .comSwiepr .swiper-container .swiper-slide{
+    padding: 0 20px;
+    z-index: 9999;
+  }
+
+  .comSwiepr .swiper-container .swiper-slide img {
     width: 100%;
     height: auto;
     vertical-align: middle;
+    border-radius: 12px;
+  }
+  .comSwiepr .swiper-pagination-bullet-active{
+    background: red !important;
   }
 
-  .swiper-pagination-fraction, .swiper-pagination-custom, .swiper-container-horizontal > .swiper-pagination-bullets {
-    bottom: 5px !important;
-  }
-
-  .swiper-pagination {
-    text-align: right !important;
-  }
-
-  .weui-grid {
+  .comSwiepr .weui-grid {
     padding: 5px 10px 5px!important;
   }
 </style>

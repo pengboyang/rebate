@@ -1,20 +1,20 @@
 <template>
   <div class="manList page-infinite-wrapper" ref="wrapper"
-       :style="{width:'100%', height: wrapperHeight + 'px'}">
+       :style="{width:'100%', height: wrapperHeight + 'px'}" @scroll="abc">
     <wv-group
       v-infinite-scroll="loadMore"
       infinite-scroll-disabled="loading"
       infinite-scroll-distance="50"
     >
-      <top-bar></top-bar>
-      <my-swiper :lists="sweiperList"></my-swiper>
+      <top-bar :scrollNums="scrollNums" ref="child"></top-bar>
+      <my-swiper></my-swiper>
       <wv-grid>
         <wv-grid-item v-for="(item,index) in toolbarList" :key="index" @click="toolbar(item.name,item.select)">
           <img :src="item.url" slot="icon">
           <span slot="label" class="icontxt">{{item.title}}</span>
         </wv-grid-item>
       </wv-grid>
-      <div>
+      <div class="bgcolors">
         <ten :listdata="listdata.girl"></ten>
         <twenty :listdata="listdata.man"></twenty>
         <hot></hot>
@@ -47,6 +47,7 @@
     name: 'manList',
     data() {
       return {
+        scrollNums:0,
         loading: false,
         wrapperHeight: 0,
         page: {
@@ -151,6 +152,10 @@
       this.serviceTime();
     },
     methods: {
+      abc(){
+        this.scrollNums = $('.manList').scrollTop();
+        this.$refs.child.childFn();
+      },
       loadMore() {
         this.loading = true;
         this.page.offset++;
@@ -255,6 +260,11 @@
   .manList{
     overflow-x: auto;
     overflow-y: auto;
+  }
+  .manList .weui-grids{
+    background: #f2f2f2!important;
+    padding-top: 15px !important;
+    padding-bottom: 15px !important;
   }
   .weui-grid {
     width: 25% !important;

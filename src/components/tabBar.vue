@@ -1,10 +1,22 @@
 <template>
   <div class="tabBar">
-    <div class="navBox" v-for="(item,index) in urlList" :key="index">
-      <div @click="goUrl(item.url,index)">
-        <span class="icon" :class="item.icon"></span>
-        <p :class="{active: $store.state.activeIndex === index}">{{item.name}}</p>
-      </div>
+    <div class="navBox">
+      <router-link to="/index">
+        <span class="sHeight"><span class="icon icon-foo"></span></span>
+        <div>推荐</div>
+      </router-link>
+    </div>
+    <div class="navBox">
+      <router-link to="/recommendation">
+        <span class="sHeight"><span class="icon icon-bar"></span></span>
+        <div>分类</div>
+      </router-link>
+    </div>
+    <div class="navBox">
+        <router-link :to="isLogins?'/mine':'/login'">
+            <span class="sHeight"><span class="icon icon-fb"></span></span>
+            <div>我的</div>
+        </router-link>
     </div>
   </div>
 </template>
@@ -15,28 +27,13 @@
     data() {
       return {
         value: '',
-        urlList:[
-          {
-            url:'/index',
-            name:'推荐',
-            icon:'icon-foo'
-          },
-          {
-            url:'/recommendation',
-            name:'分类',
-            icon:'icon-bar'
-          },
-          {
-            url:'/mine',
-            name:'我的',
-            icon:'icon-fb'
-          }
-        ],
-        activeIndex:0
+        activeIndex:0,
+        isLogins:false,
       }
     },
     computed: {},
     created(){
+      this.isLogins = this.isLogin();
       console.log(this.$store.state.activeIndex);
     },
     methods: {
@@ -68,6 +65,8 @@
     text-decoration: none;
     color: #000;
     display: block;
+    width: 100%;
+    height: 100%;
   }
 
   .tabBar {
@@ -76,14 +75,13 @@
     display: flex;
     align-items: center;
     width: 100%;
-    height: 53px;
+    height: 52px;
     position: fixed;
     z-index: 1;
     bottom: 0;
     left: 0;
     background: #fff;
     font-size: 12px;
-    border-top: 1px solid #e0e0e0;
   }
 
   .tabBar .navBox {
@@ -94,12 +92,15 @@
     padding-top: 8px;
   }
 
-  .tabBar .navBox:first-child {
-    border-right: 1px solid #e0e0e0;
+  .tabBar .navBox .sHeight{
+    width: 100%;
+    height: 20px;
+    display: block;
   }
 
-  .tabBar .navBox:nth-child(2) {
-    border-right: 1px solid #e0e0e0;
+  .tabBar .navBox div{
+    height: 24px;
+    line-height: 20px;
   }
 
   .icon {
@@ -108,13 +109,13 @@
     height: 20px;
   }
 
-  /*头条*/
+  /*推荐*/
   .icon-foo {
     background: url('../assets/img/tuijian.png');
     background-size: 100% 100%;
   }
 
-  /*视频*/
+  /*分类*/
   .icon-bar {
     background: url('../assets/img/fenlei.png');
     background-size: 100% 100%;
@@ -125,11 +126,24 @@
     background: url('../assets/img/my.png');
     background-size: 100% 100%;
   }
-
-  p {
-    line-height: 12px;
+  .router-link-active .icon-foo {
+    background: url('../assets/img/tuijian-1.png');
+    background-size: 100% 100%;
   }
 
+  .router-link-active .icon-bar {
+    background: url('../assets/img/fenlei-1.png');
+    background-size: 100% 100%;
+  }
+
+  .router-link-active .icon-fb {
+      background: url('../assets/img/my-1.png');
+      background-size: 100% 100%;
+  }
+  .router-link-active div{
+    color: red;
+    line-height: 20px;
+  }
  .active { 
     color: red;
  }
