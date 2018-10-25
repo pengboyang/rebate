@@ -266,22 +266,25 @@
     padding-top: 15px !important;
     padding-bottom: 15px !important;
   }
-  .weui-grid {
+  .manList .weui-grid {
     width: 25% !important;
   }
 
-  .weui-grids:before, .weui-grid:before, .weui-grid:after {
+  .manList .weui-grids:before, .weui-grid:before, .weui-grid:after {
     border: 0 !important;
   }
 
-  .weui-grid__icon {
+  .manList .weui-grid__icon {
     width: 50px !important;
     height: auto !important;
   }
 
-  .icontxt {
+  .manList .icontxt {
     font-size: 14px;
     color: #000;
+  }
+  .manList .weui-cells{
+    margin-top: 0;
   }
 </style>
 
