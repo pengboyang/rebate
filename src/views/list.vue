@@ -263,13 +263,15 @@
   }
   .manList .weui-grids{
     background: #f2f2f2!important;
-    padding-top: 15px !important;
-    padding-bottom: 15px !important;
+    /*padding-top: 15px !important;*/
+    /*padding-bottom: 15px !important;*/
   }
   .manList .weui-grid {
     width: 25% !important;
   }
-
+  .weui-grid{
+    padding: 10px!important;
+  }
   .manList .weui-grids:before, .weui-grid:before, .weui-grid:after {
     border: 0 !important;
   }

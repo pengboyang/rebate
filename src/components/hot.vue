@@ -57,7 +57,7 @@
 </script>
 <style>
   .freeWeek {
-    padding: 25px 15px 0px 15px;
+    padding: 15px 15px 0px 15px;
     background: #f2f2f2;
   }
 

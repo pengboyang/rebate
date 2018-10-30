@@ -39,7 +39,7 @@
 </script>
 <style>
   .manContent {
-    padding: 25px 15px 0 15px;
+    padding: 15px 15px 0 15px;
     background: #f2f2f2;
   }
   .bgComFFF{
@@ -98,7 +98,7 @@
   .price {
     color: #fe5500;
     font-size: 16px;
-    text-align: center;
+    text-align: left;
   }
 
   .price span {
