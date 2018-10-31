@@ -19,34 +19,28 @@
       <div class="commodity">
         <div class="commodityInfo">
           <div class="pic">
-            <img src="../assets/img/taobaologo.png" alt="">
+            <!-- <img src="../assets/img/taobaologo.png" alt=""> -->
+            <span class="taobao">淘宝</span>
             <span>{{title}}</span>
           </div>
         </div>
         <div class="commodityPrice">
-          <div class="nums">
-            <span class="taobao">淘宝价</span>
-            <span class="tbPrice">￥{{reservePrice}}</span>
-            <span class="baoyou">包邮</span>
-            <span class="xiaoliang">月销量</span>
-            <span class="tbNums">{{volume}}</span>
-          </div>
           <div class="Allprice">
             <span class="currentPrice">券后价</span>
-            <span class="currentPrice1">￥{{zkfinalPrice}}</span>
+            <span class="fuhao">￥</span>
+            <span class="currentPrice1">{{zkfinalPrice}}</span>
+          </div>
+          <div class="nums">
+            <span class="taobao">淘宝价 ￥{{reservePrice}}</span>
+            <span class="xiaoliang">月销量 {{volume}}</span>
+            <span class="baoyou"><span>包邮</span></span>
           </div>
         </div>
       </div>
       <div class="vouchers">
-        <div class="picBox">
-          <img src="../assets/img/vouchersBg.png" alt="">
-          <div class="contetBox" @click="goTaobao(url)">
-            <div class="left">
-              <div class="money">{{couponPrice}}元优惠券</div>
-              <div class="expiryDat">使用期限：<span>{{allTime}}</span></div>
-            </div>
-            <div class="right">立即领券</div>
-          </div>
+        <div class="picBox" @click="goTaobao(url)">
+          <img src="../assets/img/youhuijuanbeijin.png" alt="">
+          <div class="picBoxLeft"><div>{{couponPrice}}</div></div>
         </div>
         <div class="info">
           <p>宝贝详情</p>
@@ -55,9 +49,9 @@
       </div>
     </div>
     <div class="bottom">
-      <div @click="collection"><img class="img1" src="../assets/img/shoucang.png" alt=""><div class="text">收藏</div></div>
-      <div @click="showPop"><img class="img2" src="../assets/img/fenxiang.png" alt=""><div class="text">分享宝贝</div></div>
-      <div @click="goTaobao(url)">领券购买<span class="price">￥{{zkfinalPrice}}</span></div>
+      <div class="one" @click="collection"><img class="img1" src="../assets/img/shoucang.png" alt=""><div>收藏</div></div>
+      <div class="two" @click="showPop">分享宝贝</div>
+      <div class="three" @click="goTaobao(url)">领券购买<span class="price">￥{{zkfinalPrice}}</span></div>
     </div>
     <wv-popup :visible.sync="popupVisible2" :height="180">
       <div class="popTitle">分享到</div>
@@ -317,6 +311,13 @@
   margin-bottom: 5px;
   line-height: 20px;
 }
+.detail .detailWrapper .commodity .commodityInfo .pic .taobao{
+  color: #fff;
+  width: 40px;
+  background: #fe5500;
+  padding: 0 10px 1px 10px;
+  border-radius: 12px;
+}
 .detail .detailWrapper .commodity .commodityInfo .pic img{
   width: 18px;
   height: auto;
@@ -330,19 +331,27 @@
   margin-bottom: 26px;
 }
 .detail .detailWrapper .commodity .commodityPrice .Allprice .currentPrice{
-  font-size: 16px;
-  color: #fe4304;
-  font-weight: 700;
+  font-size: 14px;
+  color: #fe5500;
+}
+.detail .detailWrapper .commodity .commodityPrice .Allprice .fuhao{
+  font-size: 18px;
+  color: #fe5500;
 }
 .detail .detailWrapper .commodity .commodityPrice .Allprice .currentPrice1{
-  font-size: 16px;
-  color: #fe4304;
+  font-size: 28px;
+  color: #fe5500;
   padding-right: 15px;
   font-weight: 700;
 }
 .detail .detailWrapper .commodity .commodityPrice .nums{
  line-height: 14px;
  margin-bottom: 8px;
+ display: -webkit-flex;
+ display: flex;
+ justify-content: space-between;
+ align-items: center;
+ padding-top: 5px;
 }
 .detail .detailWrapper .commodity .commodityPrice .nums span{
   vertical-align: middle;
@@ -350,23 +359,26 @@
 .detail .detailWrapper .commodity .commodityPrice .nums .taobao{
   font-size: 14px;
   color: #000;
-}
-.detail .detailWrapper .commodity .commodityPrice .nums .tbPrice{
-  font-size: 13px;
-  padding-right: 20%;
+  text-decoration: line-through;
+  color: #999;
+  flex: 1;
 }
 .detail .detailWrapper .commodity .commodityPrice .nums .baoyou{
   font-size: 14px;
-  color: #999;
+  color: #fff;
+  flex: 1;
+  text-align: right;
+}
+.detail .detailWrapper .commodity .commodityPrice .nums .baoyou span{
+  background: #fe5500;
+  padding: 0 10px 1px 10px;
+  border-radius: 12px;
 }
 .detail .detailWrapper .commodity .commodityPrice .nums .xiaoliang{
   font-size: 14px;
   color: #999;
-}
-.detail .detailWrapper .commodity .commodityPrice .nums .tbNums{
-  font-size: 13px;
-  color: #999;
-  padding-left: 5px;
+  flex: 1;
+  text-align: right;
 }
 .detail .detailWrapper .vouchers{
   padding: 0 15px;
@@ -381,33 +393,21 @@
   height: auto;
   vertical-align: middle;
 }
-.detail .detailWrapper .vouchers .picBox .contetBox{
-  width: 100%;
-  height: 100%;
+.detail .detailWrapper .vouchers .picBox .picBoxLeft{
+  width: 40%;
+  height: 85%;
   position: absolute;
   left: 0;
   top: 0;
-  display: -webkit-flex;
   display: flex;
+  display: -webkit-flex;
   align-items: center;
-  text-align: center;
-  color: #fff;
 }
-.detail .detailWrapper .vouchers .picBox .contetBox .left{
-  flex: 2;
-  border-right: 1px dotted #fff;
-}
-.detail .detailWrapper .vouchers .picBox .contetBox .left .money{
-  font-size: 24px;
-  line-height: 24px;
-}
-.detail .detailWrapper .vouchers .picBox .contetBox .left .expiryDat{
-  font-size: 12px;
-  transform: scale(.8,.75);
-}
-.detail .detailWrapper .vouchers .picBox .contetBox .right{
+.detail .detailWrapper .vouchers .picBox .picBoxLeft div{
   flex: 1;
-  font-size: 14px;
+  text-align: right;
+  font-size: 38px;
+  color: #fe5500;
 }
 .detail .detailWrapper .vouchers .info p{
   margin-bottom: 10px;
@@ -427,33 +427,35 @@
   display: -webkit-flex;
   display: flex;
   text-align: center;
-  align-items: center;
   background: #fff;
-  border-top: 1px solid #e0e0e0;
 }
-.detail .bottom div{
+.detail .bottom .one{
+  width: 20%;
+  font-size: 12px;
+  padding-top: 10px;
+}
+.detail .bottom .two{
+  width: 40%;
+  line-height: 52px;
+  color: #fff;
+  background: #ffbe12;
+}
+.detail .bottom .three{
+  width: 40%;
+  line-height: 52px;
+  background: #fe5500;
+  color: #fff;
+}
+.detail .bottom .three .price{
+  color: #fff;
+}
+.detail .bottom div {
   height: 100%;
-  flex: 1;
-  border-right: 1px solid #e0e0e0;
-}
-.detail .bottom div:last-child{
-  border-right: none;
 }
 .detail .bottom div .img1{
-  width: 28px;
+  width: 22px;
   height: auto;
   vertical-align: middle;
-}
-.detail .bottom div .img2{
-  height: 24px;
-  vertical-align: middle;
-}
-.detail .bottom div .text{
-  font-size: 12px;
-  color: #999;
-}
-.detail .bottom div .price{
-  color: #fe4304;
 }
 .detail .popTitle{
   height: 70px;

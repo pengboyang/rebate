@@ -1,17 +1,18 @@
 <template>
   <div class="freeWeek">
-    <div class="manTitle">
-      <span class="kind">热门分类</span>
-    </div>
-    <div class="freeNovel">
-      <wv-grid>
-        <wv-grid-item v-for="(item,index) in toolbarList" :key="index" class="hotToolbar"
-                      @click="toolbar(item.name,item.select)">
-          <img :src="item.url" slot="icon">
-          <span slot="label" class="icontxt">{{item.title}}</span>
-          <span slot="label" class="iconAlt">{{item.slogan}}</span>
-        </wv-grid-item>
-      </wv-grid>
+    <div class="bgComFFF">
+        <div class="manTitle">
+          <span class="kind">热门分类</span>
+        </div>
+        <div class="freeNovel">
+          <div class="left">
+            <img src="../assets/img/yundonghuwai.png" alt="" @click="toolbar('运动户外','运动鞋')">
+          </div>
+          <div class="right">
+            <img src="../assets/img/shoujishuma.png" alt="" @click="toolbar('数码家电','手机')">
+            <img src="../assets/img/shipinbaihuo.png" alt="" @click="toolbar('食品百货','食品')">
+          </div>
+        </div>
     </div>
   </div>
 </template>
@@ -48,9 +49,6 @@
     created() {
     },
     methods: {
-      freeMoreList() {
-        this.$router.push({path: '/more'});
-      },
       toolbar(name, select) {
         this.$router.push({path: '/more', query: {id: select, name: name}});
       }
@@ -59,12 +57,18 @@
 </script>
 <style>
   .freeWeek {
-    padding: 0 15px;
-    margin-bottom: 10px;
+    padding: 15px 15px 0px 15px;
+    background: #f2f2f2;
+  }
+
+  .bgComFFF{
+    padding: 0 8px 15px 8px;
+    border-radius: 12px;
+    background: #fff;
   }
 
   .freeWeek .manTitle {
-    padding: 20px 0 20px 0;
+    padding: 15px 0 0 0;
   }
 
   .freeWeek .manTitle .timer {
@@ -119,40 +123,35 @@
     display: flex;
     flex-direction: row;
     justify-content: space-between;
+    padding-top: 10px;
   }
-
-  .freeNovel .weui-grids {
+  .freeWeek .freeNovel .left{
+    flex: 1;
+    padding-right: 3px;
+  }
+  .freeWeek .freeNovel .left img{
     width: 100%;
+    height: auto;
+    vertical-align: middle;
+    -webkit-box-shadow: 0px 0px 5px #f2f2f2;
+    box-shadow: 0px 0px 5px #999;
+    border-radius: 6px;
   }
-
-  .freeNovel .weui-grid {
-    width: 32%!important;
-    padding: 0!important;
+  .freeWeek .freeNovel .right{
+    padding-left: 3px;
+    flex: 1;
+    display: -webkit-flex;
+    display: flex;
+    flex-direction:column;
+    justify-content: space-between;
   }
-
-  .freeNovel .weui-grid .weui-grid__icon {
-    width: 100%!important;
-    height:auto!important;
-  }
-  .weui-grids:after, .weui-grids:before {
-    height: 0;
-  }
-
-  .freeNovel .weui-grid .icontxt {
-    display: block;
-    font-size: 16px;
-    font-weight: bold;
-    color: #000;
-  }
-
-  .iconAlt {
-    display: block;
-    font-size: 13px;
-    color: #444;
-  }
-
-  .hotToolbar:nth-child(2n) {
-    margin: 0 2%;
+  .freeWeek .freeNovel .right img{
+    width: 100%;
+    height: auto;
+    vertical-align: middle;
+    -webkit-box-shadow: 0px 0px 5px #f2f2f2;
+    box-shadow: 0px 0px 5px #999;
+    border-radius: 6px;
   }
 </style>
 
