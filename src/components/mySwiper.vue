@@ -10,7 +10,7 @@
   </div>
 </template>
 <script>
-  import Swiper from 'swiper';
+  import Swiper from 'swiper/dist/js/swiper.min.js';
   import 'swiper/dist/css/swiper.min.css';
   export default {
     name: 'mySwiper',
@@ -47,6 +47,13 @@
             name: 'link',
             select: 'wx'
           },
+        ],
+        blurBg:[
+          {url:require('../assets/img/neiyi.jpg')},
+          {url:require( '../assets/img/dazaxie.jpg')},
+          {url:require('../assets/img/shoujipeijian.jpg')},
+          {url:require('../assets/img/kanxinwen.jpg')},
+          {url:require('../assets/img/zongcaizaishang.jpg')},
         ]
       }
     },
@@ -81,7 +88,7 @@
                 slideChangeTransitionStart: function () {
                 },
                 slideChangeTransitionEnd: function () {
-                  $('.bg_mh').css("background-image","url(" + _this.loopLsit[this.realIndex].url+ ")")
+                  $('.bg_mh').css("background-image","url(" + _this.blurBg[this.realIndex].url+ ")");
                 },
             },
         })
@@ -120,13 +127,13 @@
     position: absolute;
     left: 0;
     top: 0;
-    background-repeat:no-repeat;
+    background-repeat:no-repeat; 
     background-size:cover;
-    -webkit-filter:blur(20px);
+    /* -webkit-filter:blur(20px);
     -moz-filter:blur(20px);
     -o-filter:blur(20px);
     -ms-filter:blur(20px);
-    filter:blur(20px);
+    filter:blur(20px); */
   }
 
   .comSwiepr .swiper-container {
@@ -152,4 +159,5 @@
     padding: 5px 10px 5px!important;
   }
 </style>
+
 

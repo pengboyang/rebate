@@ -11,9 +11,9 @@ import 'we-vue/lib/style.css'
 import '@/js/plus.js';
 import $ from 'jquery';
 import VueLazyLoad from 'vue-lazyload'
-import 'swiper/dist/css/swiper.css'
-import VueAwesomeSwiper from 'vue-awesome-swiper'
-Vue.use(VueAwesomeSwiper, /* { default global options } */)
+// import 'swiper/dist/css/swiper.css'
+// import VueAwesomeSwiper from 'vue-awesome-swiper'
+// Vue.use(VueAwesomeSwiper, /* { default global options } */)
 Vue.use(WeVue)
 Vue.use(VueRouter);
 Vue.mixin(Mixin);
