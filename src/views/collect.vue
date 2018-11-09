@@ -13,10 +13,10 @@
           infinite-scroll-disabled="loading"
           infinite-scroll-distance="50"
         >
-          <div class="wra" v-for="item in goodsLists" @click="goTaobao(item.coupon_click_url)">
+          <div class="wra" v-for="item in goodsLists" >
             <div v-if="choosePic" class="sircle" @click="choseEditBook(item.num_iid)"><img v-if="choosegoodList.indexOf(item.num_iid)>=0" src="../assets/img/xuanzhong.png" alt=""><div v-else class="box"></div></div>
-            <div class="left"><img :src="item.pictUrl" alt=""></div>
-            <div class="right" :style="{width:rightWidth}">
+            <div class="left"><img :src="item.pictUrl" alt="" @click="!choosePic?goTaobao(item.coupon_click_url):''"></div>
+            <div class="right" :style="{width:rightWidth}" @click="!choosePic?goTaobao(item.coupon_click_url):''">
               <div class="top">
                 <img :style="{width:logoWidth}" src="../assets/img/taobaologo.png" alt="">
                 <span :style="{fontSize:textFont}">{{item.title}}</span>
@@ -370,4 +370,4 @@
     text-align: center;
   }
 </style>
-
+ 
