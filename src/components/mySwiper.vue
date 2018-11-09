@@ -10,7 +10,7 @@
   </div>
 </template>
 <script>
-  import Swiper from 'swiper';
+  import Swiper from 'swiper/dist/js/swiper.min.js';
   import 'swiper/dist/css/swiper.min.css';
   export default {
     name: 'mySwiper',

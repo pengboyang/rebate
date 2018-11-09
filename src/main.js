@@ -11,9 +11,6 @@ import 'we-vue/lib/style.css'
 import '@/js/plus.js';
 import $ from 'jquery';
 import VueLazyLoad from 'vue-lazyload'
-import 'swiper/dist/css/swiper.css'
-import VueAwesomeSwiper from 'vue-awesome-swiper'
-Vue.use(VueAwesomeSwiper, /* { default global options } */)
 Vue.use(WeVue)
 Vue.use(VueRouter);
 Vue.mixin(Mixin);
@@ -44,8 +41,8 @@ const router = new VueRouter({
 
 // ajax
 Vue.$http = Vue.prototype.$http = axios.create({
-  baseURL: 'http://alimama.55duanzi.com',
-  // baseURL: 'http://api.i6bktq.cn:83',
+  // baseURL: 'http://alimama.55duanzi.com',
+  baseURL: 'http://api.i6bktq.cn:83',
   withCredentials: true,// `withCredentials` 表示跨域请求时是否需要使用凭证
   timeout: 5000
 });
